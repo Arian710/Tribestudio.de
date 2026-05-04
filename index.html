@@ -268,35 +268,22 @@
     .portfolio-carousel::-webkit-scrollbar { display: none; }
 
     .portfolio-card {
-      flex: 0 0 360px; height: 500px; border-radius: 12px;
+      flex: 0 0 300px; height: 420px; border-radius: 12px;
       scroll-snap-align: start; position: relative; overflow: hidden;
       background: var(--light-2); cursor: pointer;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
     .portfolio-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .portfolio-card:hover .portfolio-card-img { transform: scale(1.05); }
+    .portfolio-card:hover .portfolio-card-img { transform: scale(1.04); }
 
     .portfolio-card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,12,18,0.92) 0%, rgba(10,12,18,0.15) 55%, transparent 100%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.75rem;
-      transition: background 0.4s;
+      background: linear-gradient(to top, rgba(10,12,18,0.88) 0%, rgba(10,12,18,0.1) 50%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
     }
-    .portfolio-card:hover .portfolio-card-overlay { background: rgba(0,71,255,0.75); justify-content: center; align-items: center; }
-    .portfolio-card:hover .card-info { opacity: 0; }
-    .portfolio-card:hover .play-icon { opacity: 1; transform: scale(1); }
 
-    .card-info { transition: opacity 0.3s; }
     .card-category { font-size: 0.72rem; color: var(--blue-light); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
-    .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.04em; color: var(--white); }
-
-    .play-icon {
-      position: absolute; width: 60px; height: 60px;
-      border: 2px solid rgba(255,255,255,0.9); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: scale(0.8); transition: all 0.4s;
-    }
-    .play-icon svg { fill: var(--white); margin-left: 3px; }
+    .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--white); }
 
     .carousel-arrows { display: flex; gap: 0.75rem; margin-top: 2rem; padding-right: 5rem; justify-content: flex-end; }
     .carousel-btn {
@@ -446,7 +433,7 @@
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
       #portfolio { padding: 4rem 0 4rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
-      .portfolio-card { flex: 0 0 290px; height: 420px; }
+      .portfolio-card { flex: 0 0 250px; height: 360px; }
       .carousel-arrows { padding-right: 1.5rem; }
       #services { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
       .services-left { position: static; }
@@ -566,7 +553,6 @@
       </video>
       <div class="portfolio-card-overlay">
         <div class="card-info"><p class="card-category">Video Production</p><h3 class="card-title">TIMELINE</h3></div>
-        <div class="play-icon"><svg width="14" height="16" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div>
       </div>
     </div>
     <div class="portfolio-card">
@@ -576,28 +562,24 @@
       </video>
       <div class="portfolio-card-overlay">
         <div class="card-info"><p class="card-category">Drone Cinematics</p><h3 class="card-title">OSTEND FINAL</h3></div>
-        <div class="play-icon"><svg width="14" height="16" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div>
       </div>
     </div>
     <div class="portfolio-card">
       <img src="portfolio3.jpg" alt="Growth Series" class="portfolio-card-img" />
       <div class="portfolio-card-overlay">
         <div class="card-info"><p class="card-category">Content Strategy</p><h3 class="card-title">GROWTH SERIES</h3></div>
-        <div class="play-icon"><svg width="14" height="16" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div>
       </div>
     </div>
     <div class="portfolio-card">
       <img src="portfolio4.jpg" alt="Viral Content" class="portfolio-card-img" />
       <div class="portfolio-card-overlay">
         <div class="card-info"><p class="card-category">Reels &amp; Shorts</p><h3 class="card-title">VIRAL CONTENT</h3></div>
-        <div class="play-icon"><svg width="14" height="16" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div>
       </div>
     </div>
     <div class="portfolio-card">
       <img src="portfolio5.jpg" alt="Ad Creatives" class="portfolio-card-img" />
       <div class="portfolio-card-overlay">
         <div class="card-info"><p class="card-category">E-Commerce</p><h3 class="card-title">AD CREATIVES</h3></div>
-        <div class="play-icon"><svg width="14" height="16" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div>
       </div>
     </div>
   </div>
