@@ -180,6 +180,11 @@
       flex-shrink: 0; color: var(--blue-light); font-size: 0.8rem;
     }
 
+    .hero-subtext {
+      color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.7;
+      max-width: 520px; margin-bottom: 1.75rem;
+    }
+
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .btn-primary {
@@ -512,26 +517,28 @@
       Content-Agentur · Social Media · Video
     </div>
     <h1 class="hero-headline">
-      <span class="line-1"><span class="accent">CONTENT,</span> DER</span><br>
-      <span class="line-2">VERKAUFT.</span>
+      <span class="line-1">LISTINGS DIE</span><br>
+      <span class="line-2">SICH SELBST</span><br>
+      <span class="line-3"><span class="accent">VERKAUFEN.</span></span>
     </h1>
+    <p class="hero-subtext">Während andere Makler noch Fotos posten, gewinnen unsere Kunden Anfragen durch cinematische Videos – die auf Instagram, TikTok und YouTube für sich arbeiten. Rund um die Uhr.</p>
     <ul class="hero-bullets">
       <li>
         <span class="bullet-icon">▶</span>
-        Cinematic Social Content – gebaut um den Scroll zu stoppen.
+        Mehr Anfragen durch Scroll-stopping Reels
       </li>
       <li>
         <span class="bullet-icon">✎</span>
-        Hooks &amp; Scripts inklusive – wir sagen euch was funktioniert.
+        Deine Personal Brand die Vertrauen aufbaut
       </li>
       <li>
         <span class="bullet-icon">◈</span>
-        Für Brands: Branding Videos, Reels, Fotos, Paid Ads.
+        Fertig in 48h – ready to post
       </li>
     </ul>
     <div class="hero-cta-row">
-      <a href="#pakete" class="btn-primary">Unsere Pakete →</a>
-      <a href="#booking" class="btn-outline-white">Kostenloses Gespräch</a>
+      <a href="#booking" class="btn-primary">Kostenloses Erstgespräch →</a>
+      <a href="#portfolio" class="btn-outline-white">Unsere Arbeiten</a>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -838,6 +845,8 @@
   gsap.set('.hero-location', { opacity: 0, y: 20 });
   gsap.set('.line-1', { opacity: 0, y: 50 });
   gsap.set('.line-2', { opacity: 0, y: 50 });
+  gsap.set('.line-3', { opacity: 0, y: 50 });
+  gsap.set('.hero-subtext', { opacity: 0, y: 20 });
   gsap.set('.hero-bullets', { opacity: 0, y: 20 });
   gsap.set('.hero-cta-row', { opacity: 0, y: 20 });
   gsap.set('#heroContent', { opacity: 1 });
@@ -847,8 +856,10 @@
     .to('.hero-location', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.4)
     .to('.line-1',        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.6)
     .to('.line-2',        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.8)
-    .to('.hero-bullets',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.0)
-    .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.2);
+    .to('.line-3',        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 1.0)
+    .to('.hero-subtext',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.2)
+    .to('.hero-bullets',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.35)
+    .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.5);
 
   lenis.on('scroll', ({ scroll }) => {
     const hc = document.getElementById('heroContent');
