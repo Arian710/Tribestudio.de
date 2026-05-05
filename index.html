@@ -578,8 +578,7 @@
       </div>
     </div>
     <div class="portfolio-card">
-      <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto"
-             data-src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4">
+      <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
         <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
       </video>
       <div class="portfolio-card-overlay">
@@ -826,10 +825,16 @@
     document.getElementById('portfolioCarousel').scrollBy({ left: dir * 390, behavior: 'smooth' });
   }
 
-  // Portfolio videos – loop first 10 seconds only
+  // Portfolio videos – loop 10 seconds from data-start (default 0)
   document.querySelectorAll('.portfolio-video').forEach(video => {
+    const start = parseFloat(video.dataset.start || 0);
+    video.addEventListener('loadedmetadata', function() {
+      this.currentTime = start;
+    });
     video.addEventListener('timeupdate', function() {
-      if (this.currentTime >= 10) this.currentTime = 0;
+      if (this.currentTime >= start + 10 || this.currentTime < start) {
+        this.currentTime = start;
+      }
     });
   });
 
