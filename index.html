@@ -271,10 +271,12 @@
       flex: 0 0 300px; width: 300px; height: 420px;
       min-height: 420px; max-height: 420px;
       border-radius: 12px;
-      scroll-snap-align: start; position: relative; overflow: hidden;
+      scroll-snap-align: start; overflow: hidden;
       background: var(--black); cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      align-self: flex-start;
+      display: flex; flex-direction: column;
     }
     .portfolio-card:hover {
       transform: scale(1.05);
@@ -282,11 +284,12 @@
       z-index: 2;
     }
 
-    /* Video/img fills card exactly */
     .portfolio-card-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+      width: 300px; height: 420px;
+      min-width: 300px; min-height: 420px;
+      max-width: 300px; max-height: 420px;
       object-fit: cover; display: block;
+      flex-shrink: 0;
     }
 
     .portfolio-card-overlay { display: none; }
@@ -439,7 +442,8 @@
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
       #portfolio { padding: 4rem 0 4rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
-      .portfolio-card { flex: 0 0 250px; height: 360px; }
+      .portfolio-card { flex: 0 0 250px; width: 250px; height: 360px; min-height: 360px; max-height: 360px; }
+      .portfolio-card-img { width: 250px; height: 360px; min-width: 250px; min-height: 360px; max-width: 250px; max-height: 360px; }
       .carousel-arrows { padding-right: 1.5rem; }
       #services { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
       .services-left { position: static; }
