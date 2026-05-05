@@ -273,13 +273,14 @@
     .portfolio-carousel::-webkit-scrollbar { display: none; }
 
     .portfolio-card {
-      flex: 0 0 380px; width: 380px;
+      flex: 0 0 380px; width: 380px; height: 520px;
       border-radius: 16px;
       scroll-snap-align: start;
       background: var(--black); cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
+      position: relative;
     }
     .portfolio-card:hover {
       transform: scale(1.05);
@@ -288,7 +289,7 @@
     }
 
     .card-media {
-      width: 380px; height: 520px;
+      width: 100%; height: 100%;
       position: relative; overflow: hidden;
     }
 
@@ -448,7 +449,7 @@
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
       #portfolio { padding: 4rem 0 4rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
-      .portfolio-card { flex: 0 0 260px; width: 260px; }
+      .portfolio-card { flex: 0 0 260px; width: 260px; height: 360px; }
 
       .card-media { width: 260px; height: 360px; }
       .carousel-arrows { padding-right: 1.5rem; }
@@ -859,7 +860,7 @@
   const st = { start: 'top 80%', toggleActions: 'play none none none' };
 
   gsap.from('.stat-item', { scrollTrigger: { trigger: '.stats-bar', ...st }, opacity: 0, y: 30, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
-  gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, y: 50, stagger: 0.1, duration: 0.8, ease: 'power3.out' });
+  gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 0.8, ease: 'power3.out' });
   gsap.from('.services-left', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -40, duration: 0.8, ease: 'power2.out' });
   gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: 40, stagger: 0.1, duration: 0.7, ease: 'power2.out' });
   gsap.from('.pricing-card', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, scale: 0.95, stagger: 0.1, duration: 0.7, ease: 'power2.out' });
