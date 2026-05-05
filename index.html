@@ -259,32 +259,37 @@
     .portfolio-header p { font-size: 1rem; color: var(--gray-dark); margin-top: 0.75rem; max-width: 440px; line-height: 1.65; }
 
     .portfolio-carousel {
-      display: flex; gap: 1.25rem; align-items: flex-start;
+      display: flex; gap: 1.5rem; align-items: stretch;
       overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      padding-right: 5rem; padding-bottom: 1.5rem; padding-top: 1.5rem;
+      padding-right: 5rem; padding-bottom: 2.5rem; padding-top: 2.5rem;
       scrollbar-width: none;
     }
     .portfolio-carousel::-webkit-scrollbar { display: none; }
 
     .portfolio-card {
-      flex: 0 0 300px; width: 300px;
-      border-radius: 12px;
+      flex: 0 0 380px; width: 380px;
+      border-radius: 16px;
       scroll-snap-align: start;
       background: var(--black); cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      align-self: flex-start;
       overflow: hidden;
+    }
+    .portfolio-card:nth-child(2) {
+      transform: translateY(-30px);
     }
     .portfolio-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
       z-index: 2;
+    }
+    .portfolio-card:nth-child(2):hover {
+      transform: translateY(-30px) scale(1.05);
     }
 
     .card-media {
-      width: 300px; height: 420px;
+      width: 380px; height: 520px;
       position: relative; overflow: hidden;
     }
 
@@ -444,8 +449,10 @@
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
       #portfolio { padding: 4rem 0 4rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
-      .portfolio-card { flex: 0 0 250px; width: 250px; }
-      .card-media { width: 250px; height: 360px; }
+      .portfolio-card { flex: 0 0 260px; width: 260px; }
+      .portfolio-card:nth-child(2) { transform: translateY(-20px); }
+      .portfolio-card:nth-child(2):hover { transform: translateY(-20px) scale(1.05); }
+      .card-media { width: 260px; height: 360px; }
       .carousel-arrows { padding-right: 1.5rem; }
       #services { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
       .services-left { position: static; }
