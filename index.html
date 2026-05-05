@@ -287,14 +287,7 @@
       object-fit: cover; display: block;
     }
 
-    .portfolio-card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,12,18,0.88) 0%, rgba(10,12,18,0.1) 50%, transparent 100%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
-    }
-
-    .card-category { font-size: 0.72rem; color: var(--blue-light); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
-    .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--white); }
+    .portfolio-card-overlay { display: none; }
 
     .carousel-arrows { display: flex; gap: 0.75rem; margin-top: 2rem; padding-right: 5rem; justify-content: flex-end; }
     .carousel-btn {
@@ -562,37 +555,27 @@
              data-src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4">
         <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
       </video>
-      <div class="portfolio-card-overlay">
-        <div class="card-info"><p class="card-category">Video Production</p><h3 class="card-title">TIMELINE</h3></div>
-      </div>
+      <div class="portfolio-card-overlay"></div>
     </div>
     <div class="portfolio-card">
       <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
         <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
       </video>
-      <div class="portfolio-card-overlay">
-        <div class="card-info"><p class="card-category">Drone Cinematics</p><h3 class="card-title">OSTEND FINAL</h3></div>
-      </div>
+      <div class="portfolio-card-overlay"></div>
     </div>
     <div class="portfolio-card">
       <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
         <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
       </video>
-      <div class="portfolio-card-overlay">
-        <div class="card-info"><p class="card-category">Brand Promo</p><h3 class="card-title">RE PROMO</h3></div>
-      </div>
+      <div class="portfolio-card-overlay"></div>
     </div>
     <div class="portfolio-card">
       <img src="portfolio4.jpg" alt="Viral Content" class="portfolio-card-img" />
-      <div class="portfolio-card-overlay">
-        <div class="card-info"><p class="card-category">Reels &amp; Shorts</p><h3 class="card-title">VIRAL CONTENT</h3></div>
-      </div>
+      <div class="portfolio-card-overlay"></div>
     </div>
     <div class="portfolio-card">
       <img src="portfolio5.jpg" alt="Ad Creatives" class="portfolio-card-img" />
-      <div class="portfolio-card-overlay">
-        <div class="card-info"><p class="card-category">E-Commerce</p><h3 class="card-title">AD CREATIVES</h3></div>
-      </div>
+      <div class="portfolio-card-overlay"></div>
     </div>
   </div>
   <div class="carousel-arrows">
