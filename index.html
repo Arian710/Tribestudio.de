@@ -272,15 +272,37 @@
       scroll-snap-align: start; position: relative; overflow: hidden;
       background: var(--light-2); cursor: pointer;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.18);
     }
     .portfolio-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .portfolio-card:hover .portfolio-card-img { transform: scale(1.04); }
+    .portfolio-card:hover .portfolio-card-img { transform: scale(1.06); }
 
     .portfolio-card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,12,18,0.88) 0%, rgba(10,12,18,0.1) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(10,12,18,0.9) 0%, rgba(10,12,18,0.15) 50%, transparent 100%);
       display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+      transition: background 0.35s ease;
     }
+    .portfolio-card:hover .portfolio-card-overlay {
+      background: linear-gradient(to top, rgba(10,12,18,0.95) 0%, rgba(10,12,18,0.35) 60%, transparent 100%);
+    }
+
+    /* Blue accent line at bottom on hover */
+    .portfolio-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--blue);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .portfolio-card:hover::after { transform: scaleX(1); }
+
+    .card-info { transition: transform 0.35s ease; }
+    .portfolio-card:hover .card-info { transform: translateY(-4px); }
 
     .card-category { font-size: 0.72rem; color: var(--blue-light); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
     .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--white); }
@@ -565,9 +587,11 @@
       </div>
     </div>
     <div class="portfolio-card">
-      <img src="portfolio3.jpg" alt="Growth Series" class="portfolio-card-img" />
+      <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
+      </video>
       <div class="portfolio-card-overlay">
-        <div class="card-info"><p class="card-category">Content Strategy</p><h3 class="card-title">GROWTH SERIES</h3></div>
+        <div class="card-info"><p class="card-category">Brand Promo</p><h3 class="card-title">RE PROMO</h3></div>
       </div>
     </div>
     <div class="portfolio-card">
