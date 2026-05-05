@@ -268,15 +268,14 @@
     .portfolio-carousel::-webkit-scrollbar { display: none; }
 
     .portfolio-card {
-      flex: 0 0 300px; width: 300px; height: 420px;
-      min-height: 420px; max-height: 420px;
+      flex: 0 0 300px; width: 300px;
       border-radius: 12px;
-      scroll-snap-align: start; overflow: hidden;
+      scroll-snap-align: start;
       background: var(--black); cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       align-self: flex-start;
-      display: flex; flex-direction: column;
+      overflow: hidden;
     }
     .portfolio-card:hover {
       transform: scale(1.05);
@@ -284,12 +283,15 @@
       z-index: 2;
     }
 
-    .portfolio-card-img {
+    .card-media {
       width: 300px; height: 420px;
-      min-width: 300px; min-height: 420px;
-      max-width: 300px; max-height: 420px;
+      position: relative; overflow: hidden;
+    }
+
+    .portfolio-card-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover; display: block;
-      flex-shrink: 0;
     }
 
     .portfolio-card-overlay { display: none; }
@@ -442,8 +444,8 @@
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
       #portfolio { padding: 4rem 0 4rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
-      .portfolio-card { flex: 0 0 250px; width: 250px; height: 360px; min-height: 360px; max-height: 360px; }
-      .portfolio-card-img { width: 250px; height: 360px; min-width: 250px; min-height: 360px; max-width: 250px; max-height: 360px; }
+      .portfolio-card { flex: 0 0 250px; width: 250px; }
+      .card-media { width: 250px; height: 360px; }
       .carousel-arrows { padding-right: 1.5rem; }
       #services { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
       .services-left { position: static; }
@@ -557,31 +559,36 @@
   </div>
   <div class="portfolio-carousel" id="portfolioCarousel">
     <div class="portfolio-card">
-      <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto"
-             data-src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4">
-        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
-      </video>
-      <div class="portfolio-card-overlay"></div>
+      <div class="card-media">
+        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto"
+               data-src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4">
+          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <div class="portfolio-card">
-      <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
-        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
-      </video>
-      <div class="portfolio-card-overlay"></div>
+      <div class="card-media">
+        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
+          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <div class="portfolio-card">
-      <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
-        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
-      </video>
-      <div class="portfolio-card-overlay"></div>
+      <div class="card-media">
+        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
+          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <div class="portfolio-card">
-      <img src="portfolio4.jpg" alt="Viral Content" class="portfolio-card-img" />
-      <div class="portfolio-card-overlay"></div>
+      <div class="card-media">
+        <img src="portfolio4.jpg" alt="Viral Content" class="portfolio-card-img" />
+      </div>
     </div>
     <div class="portfolio-card">
-      <img src="portfolio5.jpg" alt="Ad Creatives" class="portfolio-card-img" />
-      <div class="portfolio-card-overlay"></div>
+      <div class="card-media">
+        <img src="portfolio5.jpg" alt="Ad Creatives" class="portfolio-card-img" />
+      </div>
     </div>
   </div>
   <div class="carousel-arrows">
