@@ -316,26 +316,99 @@
     }
     .carousel-btn:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* ===== SERVICES (dark) ===== */
-    #services {
-      background: var(--dark);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
-    }
-    .services-left { position: sticky; top: 30vh; }
-    .services-left p { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-top: 1.25rem; max-width: 320px; }
-    .services-right { display: flex; flex-direction: column; }
+    /* ===== SERVICES — Camera Exploded View ===== */
+    #services { height: 600vh; position: relative; }
 
-    .service-item {
-      display: grid; grid-template-columns: 70px 1fr; gap: 1.25rem;
-      padding: 2rem 0 2rem 1.25rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      border-left: 3px solid transparent;
-      transition: border-left-color 0.3s; cursor: pointer;
+    #services-sticky {
+      position: sticky; top: 0; height: 100vh; overflow: hidden;
+      background: #050d1f;
+      background-image:
+        linear-gradient(rgba(0,71,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,71,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
-    .service-item:hover { border-left-color: var(--blue); }
-    .service-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(0,71,255,0.25); line-height: 1; }
-    .service-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.04em; color: var(--white); margin-bottom: 0.4rem; }
-    .service-desc { font-size: 0.88rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    .cam-header {
+      position: absolute; top: 3rem; left: 4rem; z-index: 10; pointer-events: none;
+    }
+
+    #cam-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      overflow: visible; pointer-events: none;
+    }
+
+    .cam-label {
+      position: absolute; opacity: 0; pointer-events: none; z-index: 5; max-width: 230px;
+    }
+    .cam-label-line {
+      width: 34px; height: 1px;
+      background: linear-gradient(to right, #0047FF 60%, transparent);
+      margin-bottom: 8px; position: relative;
+    }
+    .cam-label-line::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      border: 1.5px solid #0047FF; background: #050d1f;
+      position: absolute; left: -3px; top: -2.5px;
+    }
+    .cam-label-title {
+      display: block; font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem; color: #fff; letter-spacing: 0.07em;
+      line-height: 1.2; margin-bottom: 0.3rem;
+    }
+    .cam-label-desc {
+      display: block; font-family: 'Syne', sans-serif;
+      font-size: 0.79rem; color: rgba(255,255,255,0.48); line-height: 1.6;
+    }
+
+    .cam-progress {
+      position: absolute; right: 2.5rem; top: 50%;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 0.7rem; z-index: 10;
+    }
+    .cam-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      background: transparent;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .cam-dot.active {
+      background: #0047FF; border-color: #0047FF;
+      box-shadow: 0 0 8px rgba(0,71,255,0.55);
+    }
+
+    #cam-cta-wrap {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20; pointer-events: none; text-align: center;
+    }
+    #cam-cta { opacity: 0; }
+    #cam-cta.active { pointer-events: auto; }
+    .cam-cta-super {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+      color: #0047FF; letter-spacing: 0.2em; margin-bottom: 0.2rem;
+    }
+    .cam-cta-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      color: #fff; letter-spacing: 0.04em;
+      line-height: 1.1; margin-bottom: 1.75rem;
+    }
+
+    /* Mobile services fallback list */
+    .cam-mobile-list { display: none; }
+    .cam-mobile-item {
+      display: flex; gap: 1.25rem; padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .cam-mobile-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem;
+      color: rgba(0,71,255,0.3); line-height: 1; flex-shrink: 0; width: 48px;
+    }
+    .cam-mobile-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      color: #fff; letter-spacing: 0.04em; margin-bottom: 0.3rem;
+    }
+    .cam-mobile-desc { font-size: 0.87rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
     /* ===== PRICING (light) ===== */
     #pakete { background: var(--white); }
@@ -458,8 +531,10 @@
 
       .card-media { width: 260px; height: 360px; }
       .carousel-arrows { padding-right: 1.5rem; }
-      #services { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
-      .services-left { position: static; }
+      #services { height: auto; }
+      #services-sticky { position: static; height: auto; padding: 4rem 1.5rem; background: #050d1f; }
+      #cam-svg, .cam-header, .cam-progress, .cam-label, #cam-cta-wrap { display: none; }
+      .cam-mobile-list { display: block; margin-top: 2rem; }
       .pricing-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; }
       #booking { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
@@ -607,44 +682,168 @@
   </div>
 </section>
 
-<!-- SERVICES (dark) -->
-<section id="services">
-  <div class="services-left">
-    <span class="section-tag light">Was wir machen</span>
-    <h2 class="section-headline white">UNSERE<br />LEISTUNGEN.</h2>
-    <p>Vom Konzept bis zur Veröffentlichung – wir übernehmen den gesamten Content-Prozess für euch.</p>
+<!-- SERVICES — Camera Exploded View -->
+<div id="services">
+  <div id="services-sticky">
+
+    <!-- Section header top-left -->
+    <div class="cam-header">
+      <span class="section-tag light">Was wir machen</span>
+      <h2 class="section-headline white">UNSERE<br>LEISTUNGEN.</h2>
+    </div>
+
+    <!-- SVG Camera (960×540 viewBox = 16:9) -->
+    <svg id="cam-svg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="camDots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+          <circle cx="15" cy="15" r="1.3" fill="rgba(0,71,255,0.13)"/>
+        </pattern>
+        <filter id="camGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Dot grid overlay -->
+      <rect width="960" height="540" fill="url(#camDots)"/>
+      <!-- Blueprint crosshair -->
+      <line x1="490" y1="200" x2="490" y2="340" stroke="rgba(0,71,255,0.06)" stroke-width="1"/>
+      <line x1="380" y1="270" x2="600" y2="270" stroke="rgba(0,71,255,0.06)" stroke-width="1"/>
+
+      <!-- ① LENS — large circle assembly left of body -->
+      <g id="part-lens">
+        <circle cx="322" cy="270" r="70" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <circle cx="322" cy="270" r="56" fill="none" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+        <circle cx="322" cy="270" r="42" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+        <circle cx="322" cy="270" r="27" fill="rgba(0,71,255,0.1)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <circle cx="322" cy="270" r="13" fill="rgba(0,71,255,0.28)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <circle cx="322" cy="270" r="4"  fill="rgba(255,255,255,0.45)"/>
+        <!-- lens-to-body mount -->
+        <rect x="388" y="248" width="14" height="44" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <text x="322" y="274" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.1)" text-anchor="middle">85mm f/1.4</text>
+      </g>
+
+      <!-- ② BODY — main camera rectangle -->
+      <g id="part-body">
+        <rect x="400" y="210" width="196" height="120" rx="10" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <!-- LCD screen -->
+        <rect x="414" y="222" width="86" height="54" rx="4" fill="rgba(0,71,255,0.09)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <rect x="416" y="224" width="22" height="12" rx="2" fill="rgba(255,255,255,0.025)"/>
+        <!-- Control wheel -->
+        <circle cx="548" cy="245" r="11" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.17)" stroke-width="1"/>
+        <circle cx="548" cy="245" r="5"  fill="rgba(255,255,255,0.09)"/>
+        <!-- Side buttons -->
+        <circle cx="572" cy="238" r="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+        <circle cx="572" cy="256" r="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+        <!-- Rec dot -->
+        <circle cx="549" cy="292" r="8" fill="rgba(200,30,30,0.28)" stroke="rgba(255,80,80,0.5)" stroke-width="1"/>
+        <circle cx="549" cy="292" r="4" fill="rgba(255,60,60,0.55)"/>
+        <text x="445" y="306" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.08)">SER: TS-2024-CAM</text>
+      </g>
+
+      <!-- ③ GRIP — battery grip bottom-right -->
+      <g id="part-grip">
+        <rect x="564" y="308" width="56" height="95" rx="6" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <line x1="572" y1="326" x2="612" y2="326" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="572" y1="334" x2="612" y2="334" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="572" y1="342" x2="612" y2="342" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="572" y1="350" x2="612" y2="350" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <line x1="572" y1="358" x2="612" y2="358" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <circle cx="592" cy="316" r="8" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <circle cx="592" cy="316" r="4" fill="rgba(255,255,255,0.14)"/>
+      </g>
+
+      <!-- ④ VIEWFINDER — EVF on top -->
+      <g id="part-viewfinder">
+        <rect x="438" y="183" width="86" height="29" rx="4" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <rect x="507" y="187" width="13" height="21" rx="2" fill="rgba(0,71,255,0.14)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <rect x="445" y="188" width="50" height="17" rx="2" fill="rgba(0,71,255,0.05)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      </g>
+
+      <!-- ⑤ MIC — shotgun microphone top-left -->
+      <g id="part-mic">
+        <rect x="404" y="147" width="25" height="66" rx="3" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <ellipse cx="416" cy="149" rx="10" ry="6" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+        <line x1="407" y1="158" x2="425" y2="158" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="407" y1="163" x2="425" y2="163" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="407" y1="168" x2="425" y2="168" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="407" y1="173" x2="425" y2="173" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <circle cx="413" cy="198" r="2.5" fill="rgba(255,255,255,0.14)"/>
+        <circle cx="421" cy="198" r="2.5" fill="rgba(255,255,255,0.14)"/>
+      </g>
+    </svg>
+
+    <!-- Labels (HTML, appear after each part explodes) -->
+    <div class="cam-label" id="label-lens" style="top:38%;left:2%">
+      <div class="cam-label-line"></div>
+      <span class="cam-label-title">CINEMATIC VIDEO PRODUKTION</span>
+      <span class="cam-label-desc">4K Listing-Videos die Anfragen generieren</span>
+    </div>
+    <div class="cam-label" id="label-body" style="top:4%;left:36%">
+      <div class="cam-label-line"></div>
+      <span class="cam-label-title">SOCIAL MEDIA REELS</span>
+      <span class="cam-label-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok</span>
+    </div>
+    <div class="cam-label" id="label-grip" style="bottom:6%;right:10%">
+      <div class="cam-label-line"></div>
+      <span class="cam-label-title">PERSONAL BRAND VIDEOS</span>
+      <span class="cam-label-desc">Werde der Makler den alle kennen</span>
+    </div>
+    <div class="cam-label" id="label-viewfinder" style="top:4%;right:5%">
+      <div class="cam-label-line"></div>
+      <span class="cam-label-title">DROHNENAUFNAHMEN</span>
+      <span class="cam-label-desc">Luftaufnahmen die das Objekt in Szene setzen</span>
+    </div>
+    <div class="cam-label" id="label-mic" style="top:4%;left:18%">
+      <div class="cam-label-line"></div>
+      <span class="cam-label-title">IMMOBILIEN LANDINGPAGE</span>
+      <span class="cam-label-desc">Scroll-Animationen, Calendly, fertig in 48h</span>
+    </div>
+
+    <!-- Progress dots (right edge) -->
+    <div class="cam-progress">
+      <div class="cam-dot"></div>
+      <div class="cam-dot"></div>
+      <div class="cam-dot"></div>
+      <div class="cam-dot"></div>
+      <div class="cam-dot"></div>
+    </div>
+
+    <!-- CTA — phase 6 -->
+    <div id="cam-cta-wrap">
+      <div id="cam-cta">
+        <p class="cam-cta-super">BEREIT FÜR</p>
+        <h2 class="cam-cta-headline">CONTENT DER VERKAUFT?</h2>
+        <a href="#booking" class="btn-primary">Kostenloses Erstgespräch →</a>
+      </div>
+    </div>
+
+    <!-- Mobile fallback (shown only on small screens) -->
+    <div class="cam-mobile-list">
+      <div class="cam-mobile-item">
+        <span class="cam-mobile-num">01</span>
+        <div><p class="cam-mobile-title">CINEMATIC VIDEO PRODUKTION</p><p class="cam-mobile-desc">4K Listing-Videos die Anfragen generieren</p></div>
+      </div>
+      <div class="cam-mobile-item">
+        <span class="cam-mobile-num">02</span>
+        <div><p class="cam-mobile-title">SOCIAL MEDIA REELS</p><p class="cam-mobile-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok</p></div>
+      </div>
+      <div class="cam-mobile-item">
+        <span class="cam-mobile-num">03</span>
+        <div><p class="cam-mobile-title">PERSONAL BRAND VIDEOS</p><p class="cam-mobile-desc">Werde der Makler den alle kennen</p></div>
+      </div>
+      <div class="cam-mobile-item">
+        <span class="cam-mobile-num">04</span>
+        <div><p class="cam-mobile-title">DROHNENAUFNAHMEN</p><p class="cam-mobile-desc">Luftaufnahmen die das Objekt in Szene setzen</p></div>
+      </div>
+      <div class="cam-mobile-item">
+        <span class="cam-mobile-num">05</span>
+        <div><p class="cam-mobile-title">IMMOBILIEN LANDINGPAGE</p><p class="cam-mobile-desc">Scroll-Animationen, Calendly, fertig in 48h</p></div>
+      </div>
+    </div>
+
   </div>
-  <div class="services-right">
-    <div class="service-item">
-      <span class="service-number">01</span>
-      <div>
-        <h3 class="service-title">VIDEO PRODUKTION</h3>
-        <p class="service-desc">Professionelle Videos für Social Media, Websites und Werbekampagnen. Konzept, Dreh, Schnitt – alles aus einer Hand.</p>
-      </div>
-    </div>
-    <div class="service-item">
-      <span class="service-number">02</span>
-      <div>
-        <h3 class="service-title">SOCIAL MEDIA CONTENT</h3>
-        <p class="service-desc">Strategisch geplanter Content für Instagram, TikTok und LinkedIn. Reels, Stories, Carousels – immer auf den Algorithmus optimiert.</p>
-      </div>
-    </div>
-    <div class="service-item">
-      <span class="service-number">03</span>
-      <div>
-        <h3 class="service-title">CONTENT STRATEGIE</h3>
-        <p class="service-desc">Datengetriebene Strategien die deine Zielgruppe erreichen und zur Conversion führen. Monatsplanung inkludiert.</p>
-      </div>
-    </div>
-    <div class="service-item">
-      <span class="service-number">04</span>
-      <div>
-        <h3 class="service-title">PAID ADS CREATIVES</h3>
-        <p class="service-desc">Werbemittel die performen. Creative-Sets für Meta, TikTok und Google Ads – getestet und skalierbar.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- PRICING (light) -->
 <section id="pakete">
@@ -861,8 +1060,56 @@
 
   gsap.from('.stat-item', { scrollTrigger: { trigger: '.stats-bar', ...st }, opacity: 0, y: 30, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
   gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 0.8, ease: 'power3.out' });
-  gsap.from('.services-left', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -40, duration: 0.8, ease: 'power2.out' });
-  gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: 40, stagger: 0.1, duration: 0.7, ease: 'power2.out' });
+  // Camera exploded view — only on desktop
+  if (window.innerWidth > 768 && document.getElementById('cam-svg')) {
+    const camDots = document.querySelectorAll('.cam-dot');
+
+    const camTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#services',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1.2,
+        onUpdate(self) {
+          const step = Math.min(5, Math.floor(self.progress * 6));
+          camDots.forEach((d, i) => d.classList.toggle('active', i < step));
+          if (self.progress >= 5/6) document.getElementById('cam-cta').classList.add('active');
+        }
+      }
+    });
+
+    // Phase 0→1: Lens flies left
+    camTl
+      .to('#part-lens',      { x: -345, ease: 'power2.inOut', duration: 1 }, 0)
+      .to('#label-lens',     { opacity: 1, ease: 'power2.out', duration: 0.25 }, 0.82);
+
+    // Phase 1→2: Body flies up
+    camTl
+      .to('#part-body',      { y: -252, ease: 'power2.inOut', duration: 1 }, 1)
+      .to('#label-body',     { opacity: 1, ease: 'power2.out', duration: 0.25 }, 1.82);
+
+    // Phase 2→3: Grip flies right-down
+    camTl
+      .to('#part-grip',      { x: 270, y: 138, ease: 'power2.inOut', duration: 1 }, 2)
+      .to('#label-grip',     { opacity: 1, ease: 'power2.out', duration: 0.25 }, 2.82);
+
+    // Phase 3→4: Viewfinder flies up-right
+    camTl
+      .to('#part-viewfinder',{ x: 218, y: -205, ease: 'power2.inOut', duration: 1 }, 3)
+      .to('#label-viewfinder',{ opacity: 1, ease: 'power2.out', duration: 0.25 }, 3.82);
+
+    // Phase 4→5: Mic flies up-left
+    camTl
+      .to('#part-mic',       { x: -222, y: -188, ease: 'power2.inOut', duration: 1 }, 4)
+      .to('#label-mic',      { opacity: 1, ease: 'power2.out', duration: 0.25 }, 4.82);
+
+    // Phase 5→6: CTA fades in
+    camTl
+      .to('#cam-cta',        { opacity: 1, scale: 1, ease: 'back.out(1.4)', duration: 0.5 }, 5.2);
+
+    // Set CTA initial scale via GSAP so CSS transform doesn't conflict
+    gsap.set('#cam-cta', { scale: 0.85 });
+  }
   gsap.from('.pricing-card', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, scale: 0.95, stagger: 0.1, duration: 0.7, ease: 'power2.out' });
   gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
   gsap.from('.booking-left', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, x: -40, duration: 0.8, ease: 'power2.out' });
