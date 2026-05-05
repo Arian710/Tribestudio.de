@@ -140,9 +140,14 @@
                   linear-gradient(to top, rgba(10,12,18,0.6) 0%, transparent 50%);
     }
 
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
     .hero-content {
       position: relative; z-index: 1;
       max-width: 720px; opacity: 0;
+      animation: fadeIn 0.1s 2.5s forwards;
     }
 
     .hero-location {
@@ -259,7 +264,7 @@
     .portfolio-header p { font-size: 1rem; color: var(--gray-dark); margin-top: 0.75rem; max-width: 440px; line-height: 1.65; }
 
     .portfolio-carousel {
-      display: flex; gap: 1.5rem; align-items: stretch;
+      display: flex; gap: 1.5rem; align-items: flex-start;
       overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       padding-right: 5rem; padding-bottom: 2.5rem; padding-top: 2.5rem;
@@ -484,7 +489,7 @@
     <li><a href="#booking">Kontakt</a></li>
   </ul>
   <a href="#hero" class="nav-logo">
-    <img src="F21B2D88-A89D-4FC7-9E2B-CD3505050BBA.png" alt="TribeStudio" />
+    <img src="logo.png" alt="TribeStudio" />
     <span class="nav-logo-text">TRIBE STUDIO</span>
   </a>
   <div class="nav-right">
@@ -589,12 +594,16 @@
     </div>
     <div class="portfolio-card">
       <div class="card-media">
-        <img src="portfolio4.jpg" alt="Viral Content" class="portfolio-card-img" />
+        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
+          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
     <div class="portfolio-card">
       <div class="card-media">
-        <img src="portfolio5.jpg" alt="Ad Creatives" class="portfolio-card-img" />
+        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
+          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
@@ -752,7 +761,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">
-        <img src="F21B2D88-A89D-4FC7-9E2B-CD3505050BBA.png" alt="TribeStudio" />
+        <img src="logo.png" alt="TribeStudio" />
         <span class="footer-logo-text">TRIBE STUDIO</span>
       </div>
       <p class="footer-desc">Content-Agentur für Marken, die wachsen wollen. Wir machen Content, der verkauft.</p>
