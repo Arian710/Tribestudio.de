@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -35,7 +35,7 @@
     html { scroll-behavior: auto; }
 
     body {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--white);
       color: var(--text-dark);
       overflow-x: hidden;
@@ -78,8 +78,8 @@
     }
     .nav-logo img { height: 38px; width: auto; }
     .nav-logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem; letter-spacing: 0.2em; color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800; font-size: 1.3rem; letter-spacing: 0.12em; color: var(--white);
     }
 
     .nav-right {
@@ -114,7 +114,7 @@
     .mobile-overlay.active { transform: translateX(0); }
     .mobile-overlay a {
       color: var(--white); text-decoration: none;
-      font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.1em;
+      font-family: 'DM Sans', sans-serif; font-size: 3rem; letter-spacing: 0.1em;
       transition: opacity 0.3s;
     }
     .mobile-overlay a:hover { opacity: 0.7; }
@@ -158,9 +158,10 @@
     .hero-location svg { flex-shrink: 0; }
 
     .hero-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 9vw, 8.5rem);
-      line-height: 0.93; letter-spacing: 0.02em;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.5rem, 8.5vw, 8rem);
+      line-height: 1.0; letter-spacing: -0.03em;
       color: var(--white); margin-bottom: 2rem;
     }
     .hero-headline .accent { color: var(--blue-light); }
@@ -241,7 +242,7 @@
     .stat-item { flex: 1; text-align: center; padding: 0 2rem; }
     .stat-item:not(:last-child) { border-right: 1px solid var(--light-2); }
     .stat-number {
-      font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: 3.5rem;
       color: var(--blue); line-height: 1; display: block;
     }
     .stat-label { font-size: 0.82rem; color: var(--gray-dark); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
@@ -249,16 +250,18 @@
     /* ===== SHARED ===== */
     section { padding: 6rem 5rem; }
     .section-tag {
-      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      display: inline-block; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; font-weight: 500;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--blue); margin-bottom: 0.75rem;
       background: rgba(0,71,255,0.07); padding: 0.3rem 0.75rem; border-radius: 100px;
     }
     .section-tag.light { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
     .section-headline {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
       font-size: clamp(2.8rem, 5.5vw, 5rem);
-      line-height: 1; letter-spacing: 0.02em;
+      line-height: 1.05; letter-spacing: -0.02em;
     }
     .section-headline.dark { color: var(--text-dark); }
     .section-headline.white { color: var(--white); }
@@ -353,12 +356,12 @@
       position: absolute; left: -3px; top: -2.5px;
     }
     .cam-label-title {
-      display: block; font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.05rem; color: #fff; letter-spacing: 0.07em;
-      line-height: 1.2; margin-bottom: 0.3rem;
+      display: block; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 500; color: #fff; letter-spacing: 0.06em;
+      line-height: 1.3; margin-bottom: 0.3rem; text-transform: uppercase;
     }
     .cam-label-desc {
-      display: block; font-family: 'Syne', sans-serif;
+      display: block; font-family: 'Inter', sans-serif;
       font-size: 0.79rem; color: rgba(255,255,255,0.48); line-height: 1.6;
     }
 
@@ -386,14 +389,14 @@
     #cam-cta { opacity: 0; }
     #cam-cta.active { pointer-events: auto; }
     .cam-cta-super {
-      font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
-      color: #0047FF; letter-spacing: 0.2em; margin-bottom: 0.2rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
+      color: #0047FF; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem;
     }
     .cam-cta-headline {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
       font-size: clamp(2rem, 3.8vw, 3.4rem);
-      color: #fff; letter-spacing: 0.04em;
-      line-height: 1.1; margin-bottom: 1.75rem;
+      color: #fff; letter-spacing: -0.02em;
+      line-height: 1.05; margin-bottom: 1.75rem;
     }
 
     /* Mobile services fallback list */
@@ -403,11 +406,11 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .cam-mobile-num {
-      font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: 2.5rem;
       color: rgba(0,71,255,0.3); line-height: 1; flex-shrink: 0; width: 48px;
     }
     .cam-mobile-title {
-      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      font-family: 'DM Sans', sans-serif; font-size: 1.4rem;
       color: #fff; letter-spacing: 0.04em; margin-bottom: 0.3rem;
     }
     .cam-mobile-desc { font-size: 0.87rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
@@ -436,7 +439,7 @@
       padding: 0.2rem 0.9rem; border-radius: 100px;
     }
     .pricing-name { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
-    .pricing-price { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1; margin-bottom: 0.2rem; }
+    .pricing-price { font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 3rem; line-height: 1; margin-bottom: 0.2rem; }
     .pricing-card:not(.featured) .pricing-price { color: var(--text-dark); }
     .pricing-period { font-size: 0.8rem; color: var(--gray-light); margin-bottom: 1.5rem; }
     .pricing-divider { height: 1px; background: var(--light-2); margin-bottom: 1.5rem; }
@@ -464,7 +467,7 @@
     }
     .process-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.07); }
     .process-num {
-      font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+      font-family: 'DM Sans', sans-serif; font-size: 3rem;
       color: rgba(0,71,255,0.15); line-height: 1; margin-bottom: 1rem;
     }
     .process-icon {
@@ -472,7 +475,7 @@
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
       margin-bottom: 1rem; color: var(--blue);
     }
-    .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.04em; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .step-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--text-dark); margin-bottom: 0.5rem; }
     .step-desc { font-size: 0.88rem; color: var(--gray-dark); line-height: 1.65; }
 
     /* ===== BOOKING (dark) ===== */
@@ -481,9 +484,9 @@
       display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center;
     }
     .booking-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; margin-bottom: 1.75rem;
-      color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 1.75rem; color: var(--white);
     }
     .booking-headline span { color: var(--blue-light); }
     .booking-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
@@ -503,7 +506,7 @@
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
     .footer-logo { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; height: 36px; }
     .footer-logo img { height: 36px; width: auto; }
-    .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.2em; color: var(--white); }
+    .footer-logo-text { font-family: 'DM Sans', sans-serif; font-size: 1.3rem; letter-spacing: 0.2em; color: var(--white); }
     .footer-desc { font-size: 0.88rem; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 270px; }
     .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
@@ -748,7 +751,7 @@
         <circle cx="322" cy="270" r="4"  fill="rgba(255,255,255,0.45)"/>
         <!-- lens-to-body mount -->
         <rect x="388" y="248" width="14" height="44" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-        <text x="322" y="274" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.1)" text-anchor="middle">85mm f/1.4</text>
+        <text x="322" y="274" font-family="'JetBrains Mono', monospace" font-size="7" fill="rgba(255,255,255,0.1)" text-anchor="middle">85mm f/1.4</text>
       </g>
 
       <!-- ② BODY — main camera rectangle -->
@@ -766,7 +769,7 @@
         <!-- Rec dot -->
         <circle cx="549" cy="292" r="8" fill="rgba(200,30,30,0.28)" stroke="rgba(255,80,80,0.5)" stroke-width="1"/>
         <circle cx="549" cy="292" r="4" fill="rgba(255,60,60,0.55)"/>
-        <text x="445" y="306" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.08)">SER: TS-2024-CAM</text>
+        <text x="445" y="306" font-family="'JetBrains Mono', monospace" font-size="5.5" fill="rgba(255,255,255,0.08)">SER: TS-2024-CAM</text>
       </g>
 
       <!-- ③ GRIP — battery grip bottom-right -->
