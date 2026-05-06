@@ -242,7 +242,7 @@
     .stat-item { flex: 1; text-align: center; padding: 0 2rem; }
     .stat-item:not(:last-child) { border-right: 1px solid var(--light-2); }
     .stat-number {
-      font-family: 'DM Sans', sans-serif; font-size: 3.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: clamp(1rem, 1.6vw, 1.5rem);
       color: var(--blue); line-height: 1; display: block;
     }
     .stat-label { font-size: 0.82rem; color: var(--gray-dark); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
@@ -657,16 +657,13 @@
 <!-- STATS BAR (light) -->
 <div class="stats-bar">
   <div class="stat-item">
-    <span class="stat-number">120+</span>
-    <span class="stat-label">Projekte abgeschlossen</span>
+    <span class="stat-number">Cinematische Listings</span>
   </div>
   <div class="stat-item">
-    <span class="stat-number">3M+</span>
-    <span class="stat-label">Erreichte Views</span>
+    <span class="stat-number">Personal Branding</span>
   </div>
   <div class="stat-item">
-    <span class="stat-number">98%</span>
-    <span class="stat-label">Kundenzufriedenheit</span>
+    <span class="stat-number">Conversion-First Mindset</span>
   </div>
 </div>
 
