@@ -278,7 +278,9 @@
     .portfolio-carousel::-webkit-scrollbar { display: none; }
 
     .portfolio-card {
-      flex: 0 0 380px; width: 380px; height: 520px;
+      flex: 0 0 clamp(300px, 24vw, 560px);
+      width: clamp(300px, 24vw, 560px);
+      height: clamp(410px, 33vw, 770px);
       border-radius: 16px;
       scroll-snap-align: start;
       background: var(--black); cursor: pointer;
@@ -513,6 +515,29 @@
     .footer-bottom a:hover { color: var(--blue-light); }
 
     /* ===== RESPONSIVE ===== */
+
+    /* Large screens: give portfolio more breathing room */
+    @media (min-width: 1600px) {
+      #portfolio { padding: 7rem 0 7rem 6rem; }
+      .portfolio-carousel { gap: 2rem; padding-right: 6rem; }
+    }
+
+    /* Small height: compress hero so everything fits */
+    @media (max-height: 820px) {
+      .hero-headline { font-size: clamp(3rem, 7vw, 7rem); margin-bottom: 1.25rem; }
+      .hero-location { margin-bottom: 1.25rem; }
+      .hero-subtext { font-size: 0.92rem; margin-bottom: 1.25rem; }
+      .hero-bullets { gap: 0.6rem; margin-bottom: 1.5rem; }
+      .hero-bullets li { font-size: 0.9rem; }
+      .hero-bullets li .bullet-icon { width: 26px; height: 26px; }
+    }
+    @media (max-height: 680px) {
+      .hero-headline { font-size: clamp(2.4rem, 6vw, 5.5rem); margin-bottom: 0.8rem; }
+      .hero-location { margin-bottom: 0.8rem; }
+      .hero-subtext { display: none; }
+      .hero-bullets { gap: 0.45rem; margin-bottom: 1rem; }
+    }
+
     @media (max-width: 1024px) {
       .process-grid { grid-template-columns: repeat(2,1fr); }
     }
@@ -527,9 +552,8 @@
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
       #portfolio { padding: 4rem 0 4rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
-      .portfolio-card { flex: 0 0 260px; width: 260px; height: 360px; }
-
-      .card-media { width: 260px; height: 360px; }
+      .portfolio-card { flex: 0 0 clamp(220px, 65vw, 300px); width: clamp(220px, 65vw, 300px); height: clamp(300px, 88vw, 420px); }
+      .card-media { width: 100%; height: 100%; }
       .carousel-arrows { padding-right: 1.5rem; }
       #services { height: auto; }
       #services-sticky { position: static; height: auto; padding: 4rem 1.5rem; background: #050d1f; }
