@@ -525,6 +525,11 @@
       .portfolio-carousel { gap: 2rem; padding-right: 6rem; }
     }
 
+    /* Large screens: re-center hero vertically */
+    @media (min-height: 860px) {
+      #hero { align-items: center; padding-top: 4rem; }
+    }
+
     /* Small height: compress hero so everything fits */
     @media (max-height: 820px) {
       .hero-headline { font-size: clamp(3rem, 7vw, 7rem); margin-bottom: 1.25rem; }
