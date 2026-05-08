@@ -331,6 +331,7 @@
 
     #services-canvas {
       position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+      background: #050d1f;
     }
 
     /* Loading overlay */
@@ -369,13 +370,19 @@
 
     /* Section header top-left */
     .svc-header {
-      position: absolute; top: 3rem; left: 4rem; z-index: 10; pointer-events: none;
+      position: absolute; top: 2rem; left: 3rem; z-index: 10; pointer-events: none;
+    }
+    .svc-header .section-tag {
+      font-size: 0.7rem; color: var(--blue);
+    }
+    .svc-header .section-headline {
+      font-size: 2rem;
     }
 
     /* Phase text overlays bottom-left */
     .svc-phase-wrap {
-      position: absolute; bottom: 3.5rem; left: 4rem;
-      z-index: 10; max-width: 440px;
+      position: absolute; bottom: 3rem; left: 3rem;
+      z-index: 10;
     }
     .svc-phase {
       position: absolute; bottom: 0; left: 0;
@@ -386,33 +393,35 @@
     .svc-phase.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .svc-phase-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; letter-spacing: 0.22em;
-      color: #0047FF; margin-bottom: 0.55rem; text-transform: uppercase;
+      font-size: 0.75rem; letter-spacing: 0.2em;
+      color: var(--blue); margin-bottom: 0.5rem; text-transform: uppercase;
     }
     .svc-phase-title {
-      font-family: 'DM Sans', sans-serif; font-weight: 800;
-      font-size: clamp(1.5rem, 2.6vw, 2.6rem);
-      color: #fff; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 0.55rem;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 2.5rem;
+      color: #fff; white-space: nowrap; line-height: 1.05; margin-bottom: 0.55rem;
     }
     .svc-phase-desc {
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; color: rgba(255,255,255,0.52); line-height: 1.65;
+      font-size: 1rem; color: rgba(255,255,255,0.6);
+      line-height: 1.6; max-width: 400px;
     }
 
     /* Progress dots right edge */
     .svc-dots {
-      position: absolute; right: 2.5rem; top: 50%;
+      position: absolute; right: 2rem; top: 50%;
       transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 0.7rem; z-index: 10;
+      display: flex; flex-direction: column; gap: 0.8rem; z-index: 10;
     }
     .svc-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.3); background: transparent;
-      cursor: pointer; transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      width: 7px; height: 7px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.35); background: transparent;
+      cursor: pointer; transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, width 0.3s, height 0.3s;
     }
     .svc-dot.active {
+      width: 10px; height: 10px;
       background: #0047FF; border-color: #0047FF;
-      box-shadow: 0 0 8px rgba(0,71,255,0.55);
+      box-shadow: 0 0 10px rgba(0,71,255,0.6);
     }
 
     /* CTA overlay */
@@ -1170,6 +1179,8 @@
       const cw = canvas.width, ch = canvas.height;
       const iw = img.naturalWidth, ih = img.naturalHeight;
       if (!iw || !ih) return;
+      ctx.fillStyle = '#050d1f';
+      ctx.fillRect(0, 0, cw, ch);
       const s = Math.max(cw / iw, ch / ih);
       ctx.drawImage(img, (cw - iw * s) / 2, (ch - ih * s) / 2, iw * s, ih * s);
     }
