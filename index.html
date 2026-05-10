@@ -121,10 +121,10 @@
 
     /* ===== HERO (dark, left-aligned, like reference) ===== */
     #hero {
-      min-height: 100vh; position: relative; overflow: hidden;
+      min-height: 100vh; position: relative;
       display: flex; align-items: flex-start;
       background: var(--black);
-      padding: clamp(5rem, 13vh, 9rem) 5rem 4rem;
+      padding: clamp(4.5rem, 10vh, 9rem) 5rem clamp(3rem, 5vh, 5rem);
     }
 
     .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
@@ -146,29 +146,33 @@
 
     .hero-content {
       position: relative; z-index: 1;
-      max-width: clamp(620px, 48vw, 1060px); opacity: 0;
+      max-width: clamp(680px, 55vw, 1060px); opacity: 0;
       animation: fadeIn 0.1s 2.5s forwards;
     }
 
     .hero-location {
       display: flex; align-items: center; gap: 0.5rem;
       color: rgba(255,255,255,0.55); font-size: 0.85rem; font-weight: 500;
-      margin-bottom: 1.75rem; letter-spacing: 0.02em;
+      margin-bottom: clamp(1rem, 2vh, 1.75rem); letter-spacing: 0.02em;
     }
     .hero-location svg { flex-shrink: 0; }
 
     .hero-headline {
       font-family: 'DM Sans', sans-serif;
       font-weight: 800;
-      font-size: clamp(3.5rem, 8.5vw, 8rem);
+      font-size: clamp(3rem, min(7.5vw, 11vh), 7rem);
       line-height: 1.0; letter-spacing: -0.03em;
-      color: var(--white); margin-bottom: 2rem;
+      color: var(--white); margin-bottom: clamp(1rem, 2.5vh, 2rem);
     }
+    .hero-headline .line-1,
+    .hero-headline .line-2,
+    .hero-headline .line-3 { display: block; white-space: nowrap; }
     .hero-headline .accent { color: var(--blue-light); }
 
     .hero-bullets {
-      list-style: none; display: flex; flex-direction: column; gap: 0.9rem;
-      margin-bottom: 2.5rem;
+      list-style: none; display: flex; flex-direction: column;
+      gap: clamp(0.5rem, 0.9vh, 0.9rem);
+      margin-bottom: clamp(1.5rem, 2.5vh, 2.5rem);
     }
     .hero-bullets li {
       display: flex; align-items: center; gap: 0.75rem;
@@ -183,7 +187,7 @@
 
     .hero-subtext {
       color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.7;
-      max-width: 520px; margin-bottom: 1.75rem;
+      max-width: 520px; margin-bottom: clamp(1rem, 2vh, 1.75rem);
     }
 
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
