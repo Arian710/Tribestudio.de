@@ -639,7 +639,8 @@
       border-radius: 16px;
       width: min(860px, 92vw);
       max-height: 85vh;
-      overflow-y: auto;
+      min-height: 0;
+      overflow-y: scroll;
       position: relative;
       padding: 2.5rem 3rem;
       scrollbar-width: thin;
@@ -1485,6 +1486,11 @@
     if (e.target === document.getElementById('datenschutz-modal')) closeDatenschutz();
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDatenschutz(); });
+
+  // Prevent Lenis from intercepting scroll events inside the modal
+  const dpBox = document.querySelector('.datenschutz-box');
+  dpBox.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
+  dpBox.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
 </script>
 </body>
 </html>
