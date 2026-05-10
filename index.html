@@ -1474,10 +1474,12 @@
   function openDatenschutz() {
     document.getElementById('datenschutz-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
+    lenis.stop();
   }
   function closeDatenschutz() {
     document.getElementById('datenschutz-modal').classList.remove('active');
     document.body.style.overflow = '';
+    lenis.start();
   }
   function closeDatenschutzOutside(e) {
     if (e.target === document.getElementById('datenschutz-modal')) closeDatenschutz();
