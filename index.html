@@ -673,7 +673,21 @@
       #services { position: static; height: auto; padding: 4rem 1.5rem; }
       #services-canvas, .svc-tint, .svc-header, .svc-dots, .svc-phase-wrap, #svc-cta-wrap, #svc-loader { display: none; }
       .cam-mobile-list { display: block; margin-top: 2rem; }
-      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+        scrollbar-width: none;
+      }
+      .pricing-grid::-webkit-scrollbar { display: none; }
+      .pricing-card {
+        flex: 0 0 82vw;
+        width: 82vw;
+        scroll-snap-align: start;
+      }
       .process-grid { grid-template-columns: 1fr; }
       #booking { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
