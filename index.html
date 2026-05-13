@@ -119,90 +119,90 @@
     }
     .mobile-overlay a:hover { opacity: 0.7; }
 
-    /* ===== HERO (dark, left-aligned, like reference) ===== */
+    /* ===== HERO ===== */
     #hero {
-      min-height: 100vh; position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
+      height: 100vh; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
       background: var(--black);
-      padding: clamp(7rem, 13vh, 10rem) 5rem clamp(2rem, 3.5vh, 3.5rem);
+      padding: 0 5rem;
     }
 
-    .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg-video {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center;
+      object-fit: cover; object-position: center;
     }
     .hero-bg-grad {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(10,12,18,0.75) 0%, rgba(10,12,18,0.35) 65%, rgba(10,12,18,0.15) 100%),
-                  linear-gradient(to top, rgba(10,12,18,0.6) 0%, transparent 50%);
+      background: linear-gradient(90deg,
+        rgba(6,8,16,0.92) 0%,
+        rgba(6,8,16,0.70) 50%,
+        rgba(6,8,16,0.30) 100%);
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .hero-inner {
+      width: 100%; max-width: 1400px;
+      position: relative; z-index: 1;
     }
 
     .hero-content {
-      position: relative; z-index: 1;
-      max-width: clamp(680px, 55vw, 1060px); opacity: 0;
+      max-width: 700px;
+      display: flex; flex-direction: column;
+      opacity: 0;
       animation: fadeIn 0.1s 2.5s forwards;
-      display: flex; flex-direction: column; flex: 1;
-    }
-
-    .hero-bottom {
-      margin-top: auto;
-      padding-top: clamp(1.5rem, 3vh, 3rem);
     }
 
     .hero-location {
       display: flex; align-items: center; gap: 0.5rem;
       color: rgba(255,255,255,0.55); font-size: 0.85rem; font-weight: 500;
-      margin-bottom: clamp(0.75rem, 1.5vh, 1.75rem); letter-spacing: 0.02em;
+      margin-bottom: 1.5rem; letter-spacing: 0.02em;
     }
     .hero-location svg { flex-shrink: 0; }
 
     .hero-headline {
       font-family: 'DM Sans', sans-serif;
       font-weight: 800;
-      font-size: clamp(2.8rem, min(6vw, 8.5vh), 6.5rem);
-      line-height: 0.92; letter-spacing: -0.03em;
-      color: var(--white); margin-bottom: clamp(0.75rem, 2vh, 2rem);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 2rem; max-width: 700px;
     }
     .hero-headline .line-1,
     .hero-headline .line-2,
     .hero-headline .line-3 { display: block; white-space: nowrap; }
     .hero-headline .accent { color: var(--blue-light); }
 
+    .hero-subtext {
+      color: rgba(255,255,255,0.65);
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.6; max-width: 480px; margin-bottom: 1.5rem;
+    }
+
     .hero-bullets {
       list-style: none; display: flex; flex-direction: column;
-      gap: clamp(0.4rem, 0.8vh, 0.9rem);
-      margin-bottom: clamp(1rem, 2vh, 2.5rem);
+      gap: 0.6rem; margin-bottom: 2rem;
     }
     .hero-bullets li {
       display: flex; align-items: center; gap: 0.75rem;
-      color: rgba(255,255,255,0.8); font-size: 1rem; font-weight: 500;
+      color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 400;
     }
     .hero-bullets li .bullet-icon {
-      width: 30px; height: 30px; border-radius: 6px;
+      width: 24px; height: 24px; border-radius: 5px;
       background: rgba(0,71,255,0.2); border: 1px solid rgba(0,71,255,0.35);
       display: inline-flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: var(--blue-light); font-size: 0.8rem;
-    }
-
-    .hero-subtext {
-      color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.7;
-      max-width: 520px; margin-bottom: clamp(0.75rem, 1.5vh, 1.75rem);
+      flex-shrink: 0; color: var(--blue-light);
     }
 
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .btn-primary {
       background: var(--blue); color: var(--white);
-      padding: 0.9rem 2rem; border-radius: 8px;
+      padding: 1rem 2rem; border-radius: 10px;
       font-size: 0.95rem; font-weight: 700; cursor: pointer;
-      text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
       border: none;
     }
     .btn-primary:hover { background: #0039cc; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,71,255,0.35); }
@@ -210,7 +210,7 @@
     .btn-outline-white {
       background: transparent; color: var(--white);
       border: 1px solid rgba(255,255,255,0.25);
-      padding: 0.9rem 2rem; border-radius: 8px;
+      padding: 1rem 2rem; border-radius: 10px;
       font-size: 0.95rem; font-weight: 600; cursor: pointer;
       text-decoration: none; transition: all 0.3s; display: inline-block;
     }
@@ -219,7 +219,7 @@
     .btn-outline-dark {
       background: transparent; color: var(--text-dark);
       border: 1.5px solid rgba(10,12,18,0.2);
-      padding: 0.9rem 2rem; border-radius: 8px;
+      padding: 1rem 2rem; border-radius: 10px;
       font-size: 0.95rem; font-weight: 600; cursor: pointer;
       text-decoration: none; transition: all 0.3s; display: inline-block;
     }
@@ -706,25 +706,12 @@
       .portfolio-carousel { gap: 2rem; padding-right: 6rem; }
     }
 
-    /* Large screens: re-center hero vertically */
-    @media (min-height: 860px) {
-      #hero { padding-top: 5rem; }
-    }
-
-    /* Small height: compress hero so everything fits */
-    @media (max-height: 820px) {
-      .hero-headline { font-size: clamp(3rem, 7vw, 7rem); margin-bottom: 1.25rem; }
-      .hero-location { margin-bottom: 1.25rem; }
-      .hero-subtext { font-size: 0.92rem; margin-bottom: 1.25rem; }
-      .hero-bullets { gap: 0.6rem; margin-bottom: 1.5rem; }
-      .hero-bullets li { font-size: 0.9rem; }
-      .hero-bullets li .bullet-icon { width: 26px; height: 26px; }
-    }
-    @media (max-height: 680px) {
-      .hero-headline { font-size: clamp(2.4rem, 6vw, 5.5rem); margin-bottom: 0.8rem; }
-      .hero-location { margin-bottom: 0.8rem; }
-      .hero-subtext { display: none; }
-      .hero-bullets { gap: 0.45rem; margin-bottom: 1rem; }
+    /* Short screens: scale down so everything fits in 100vh */
+    @media (max-height: 700px) {
+      .hero-headline { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.2rem; }
+      .hero-location { margin-bottom: 1rem; }
+      .hero-subtext { font-size: 0.9rem; margin-bottom: 1rem; }
+      .hero-bullets { gap: 0.4rem; margin-bottom: 1.2rem; }
     }
 
     @media (max-width: 1024px) {
@@ -735,7 +722,14 @@
       .nav-links, .nav-right { display: none; }
       .hamburger { display: flex; }
       section { padding: 4rem 1.5rem; }
-      #hero { padding: 8rem 1.5rem 2.5rem; }
+      #hero { padding: 0 1.5rem; }
+      .hero-headline { font-size: clamp(2.2rem, 8vw, 3.2rem); margin-bottom: 1.4rem; }
+      .hero-location { margin-bottom: 1.05rem; }
+      .hero-subtext { font-size: 0.95rem; margin-bottom: 1.05rem; }
+      .hero-bullets { gap: 0.42rem; margin-bottom: 1.4rem; }
+      .hero-cta-row { flex-direction: column; gap: 0.75rem; }
+      .hero-cta-row .btn-primary,
+      .hero-cta-row .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
       .stats-bar { display: none; }
       .stat-item { padding: 1.5rem 0; width: 100%; }
       .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
@@ -813,34 +807,34 @@
     </video>
     <div class="hero-bg-grad"></div>
   </div>
-  <div class="hero-content" id="heroContent">
-    <div class="hero-location">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      Content-Agentur · Social Media · Video
-    </div>
-    <h1 class="hero-headline">
-      <span class="line-1">LISTINGS DIE</span>
-      <span class="line-2">SICH SELBST</span>
-      <span class="line-3"><span class="accent">VERKAUFEN.</span></span>
-    </h1>
-    <div class="hero-bottom">
+  <div class="hero-inner">
+    <div class="hero-content" id="heroContent">
+      <div class="hero-location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Content-Agentur · Social Media · Video
+      </div>
+      <h1 class="hero-headline">
+        <span class="line-1">LISTINGS DIE</span>
+        <span class="line-2">SICH SELBST</span>
+        <span class="line-3"><span class="accent">VERKAUFEN.</span></span>
+      </h1>
       <p class="hero-subtext">Während andere Makler noch Fotos posten, gewinnen unsere Kunden Anfragen durch cinematische Videos – die auf Social Media für sich arbeiten. Rund um die Uhr.</p>
       <ul class="hero-bullets">
         <li>
           <span class="bullet-icon">
-            <svg width="11" height="13" viewBox="0 0 11 13" fill="currentColor"><path d="M0 0.5v12l11-6L0 0.5z"/></svg>
+            <svg width="10" height="12" viewBox="0 0 11 13" fill="currentColor"><path d="M0 0.5v12l11-6L0 0.5z"/></svg>
           </span>
           Mehr Anfragen durch Scroll-stopping Reels
         </li>
         <li>
           <span class="bullet-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
           </span>
           Deine Personal Brand die Vertrauen aufbaut
         </li>
         <li>
           <span class="bullet-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </span>
           Fertig in 48h – ready to post
         </li>
@@ -1373,10 +1367,10 @@
     .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.5);
 
   lenis.on('scroll', ({ scroll }) => {
-    const hc = document.getElementById('heroContent');
+    const hi = document.querySelector('.hero-inner');
     const hb = document.getElementById('heroBg');
-    if (hc) hc.style.transform = `translateY(${scroll * 0.28}px)`;
-    if (hb) hb.style.transform = `translateY(${scroll * 0.12}px)`;
+    if (hi) hi.style.transform = `translateY(${scroll * 0.22}px)`;
+    if (hb) hb.style.transform = `translateY(${scroll * 0.10}px)`;
   });
 
   const st = { start: 'top 80%', toggleActions: 'play none none none' };
