@@ -389,105 +389,60 @@
       .service-title { font-size: clamp(1.2rem, 5vw, 1.6rem); }
     }
 
-    /* ===== PRICING (light) ===== */
+    /* ===== CONTACT FORM (light) ===== */
     #pakete { background: var(--white); }
-    .pricing-intro { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3.5rem; }
-    .pricing-intro p { font-size: 1rem; color: var(--gray-dark); max-width: 360px; line-height: 1.65; }
+    .contact-intro { margin-bottom: 3rem; }
+    .contact-intro p { font-size: 1rem; color: var(--gray-dark); max-width: 480px; line-height: 1.65; margin-top: 0.75rem; }
 
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; align-items: stretch;
+    .contact-form {
+      max-width: 680px;
+      display: flex; flex-direction: column; gap: 1.5rem;
     }
 
-    .pricing-card {
-      background: var(--light); border: 1.5px solid var(--light-2);
-      border-radius: 16px; padding: 2.5rem 2.25rem;
-      display: flex; flex-direction: column;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.09); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
-    .pricing-card.featured {
-      border: 2px solid transparent;
-      background-image:
-        linear-gradient(var(--black), var(--black)),
-        linear-gradient(150deg, #0047FF 0%, #3D6EFF 50%, #0047FF 100%);
-      background-origin: border-box;
-      background-clip: padding-box, border-box;
-      box-shadow: 0 0 40px rgba(0,71,255,0.2);
-      color: var(--white);
-      position: relative;
-    }
-    .pricing-card.featured:hover { transform: translateY(-5px); box-shadow: 0 8px 60px rgba(0,71,255,0.28); }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
 
-    .pricing-badge {
-      display: inline-block; align-self: flex-start;
-      background: var(--blue); color: var(--white);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; padding: 0.25rem 0.85rem;
-      border-radius: 100px; margin-bottom: 1.5rem;
-    }
-
-    .pricing-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 1rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 0.25rem;
-    }
-    .pricing-card.featured .pricing-name { color: rgba(255,255,255,0.55); }
-
-    .pricing-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem; color: var(--gray-light); margin-bottom: 1rem;
-    }
-    .pricing-card.featured .pricing-subtitle { color: rgba(255,255,255,0.35); }
-
-    .pricing-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: clamp(3rem, 5vw, 4rem);
-      line-height: 1; letter-spacing: -0.01em; margin-bottom: 0.3rem;
+    .form-group label {
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
       color: var(--text-dark);
     }
-    .pricing-card.featured .pricing-price { color: var(--white); }
+    .form-optional { font-weight: 400; color: var(--gray-light); }
 
-    .pricing-period {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem; color: var(--gray-light); margin-bottom: 1.75rem;
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      border: 1.5px solid var(--light-2);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      color: var(--text-dark); background: var(--light);
+      transition: border-color 0.25s, box-shadow 0.25s;
+      outline: none; resize: vertical;
     }
-    .pricing-card.featured .pricing-period { color: rgba(255,255,255,0.38); }
-
-    .pricing-divider { height: 1px; background: var(--light-2); margin-bottom: 1.75rem; }
-    .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.1); }
-
-    .pricing-features {
-      list-style: none; flex: 1;
-      margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.8rem;
-    }
-    .pricing-features li {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; color: var(--gray-dark);
-      display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.4;
-    }
-    .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.7); }
-    .pricing-features li::before {
-      content: ''; width: 5px; height: 5px; background: var(--blue);
-      border-radius: 50%; flex-shrink: 0; margin-top: 0.45em;
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray-light); }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,71,255,0.08);
+      background: var(--white);
     }
 
-    .pricing-btn {
-      display: block; text-align: center; padding: 0.9rem 1rem;
-      border-radius: 10px; font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; font-weight: 700; text-decoration: none;
-      transition: all 0.25s; cursor: pointer; margin-top: auto;
+    .contact-submit { align-self: flex-start; }
+
+    .form-success {
+      display: none; align-items: center; gap: 0.75rem;
+      background: rgba(0,71,255,0.07); border: 1.5px solid rgba(0,71,255,0.2);
+      border-radius: 10px; padding: 1rem 1.25rem;
+      color: var(--blue); font-size: 0.9rem; font-weight: 600;
+      max-width: 680px;
     }
-    .pricing-btn-outline {
-      border: 1.5px solid var(--light-2); color: var(--text-dark); background: var(--white);
+    .form-success.visible { display: flex; }
+
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-submit { width: 100%; justify-content: center; }
     }
-    .pricing-btn-outline:hover { border-color: var(--blue); color: var(--blue); background: var(--white); }
-    .pricing-btn-filled {
-      background: var(--blue); color: var(--white); border: 1.5px solid var(--blue);
-    }
-    .pricing-btn-filled:hover { background: #0039cc; border-color: #0039cc; }
 
     /* ===== PROCESS (light) ===== */
     #process { background: var(--light); }
@@ -660,21 +615,6 @@
       .card-media { width: 100%; height: 100%; }
       .carousel-arrows { padding-right: 1.5rem; }
 
-      .pricing-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 1rem;
-        padding-bottom: 1.5rem;
-        scrollbar-width: none;
-      }
-      .pricing-grid::-webkit-scrollbar { display: none; }
-      .pricing-card {
-        flex: 0 0 82vw;
-        width: 82vw;
-        scroll-snap-align: start;
-      }
       .process-grid { grid-template-columns: 1fr; }
       #booking { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -689,7 +629,7 @@
 <div class="mobile-overlay" id="mobileOverlay">
   <a href="#services" onclick="closeMobile()">Services</a>
   <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#pakete" onclick="closeMobile()">Pakete</a>
+  <a href="#pakete" onclick="closeMobile()">Anfrage</a>
   <a href="#booking" onclick="closeMobile()">Kontakt</a>
 </div>
 
@@ -698,7 +638,7 @@
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#pakete">Pakete</a></li>
+    <li><a href="#pakete">Anfrage</a></li>
     <li><a href="#booking">Kontakt</a></li>
   </ul>
   <a href="#hero" class="nav-logo">
@@ -866,65 +806,37 @@
 </section>
 
 
-<!-- PRICING (light) -->
+<!-- ANFRAGE -->
 <section id="pakete">
-  <div class="pricing-intro">
-    <div>
-      <span class="section-tag">Transparente Preise</span>
-      <h2 class="section-headline dark">UNSERE PAKETE.</h2>
-    </div>
-    <p>Klare Leistungen, faire Preise. Kein Kleingedrucktes.</p>
+  <div class="contact-intro">
+    <span class="section-tag">Anfrage</span>
+    <h2 class="section-headline dark">INTERESSE? SCHREIB UNS.</h2>
+    <p>Beschreib uns kurz dein Projekt – wir melden uns innerhalb von 24 Stunden bei dir.</p>
   </div>
-  <div class="pricing-grid">
-
-    <!-- STARTER -->
-    <div class="pricing-card">
-      <p class="pricing-name">STARTER</p>
-      <p class="pricing-subtitle">Pro Objekt</p>
-      <p class="pricing-price">990€</p>
-      <p class="pricing-period">pro Objekt · einmalig</p>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-features">
-        <li>Cinematic Listing Video (60 Sek, alle Formate)</li>
-        <li>Drohnenaufnahmen inklusive</li>
-        <li>Skript &amp; Hook inklusive</li>
-      </ul>
-      <a href="#booking" class="pricing-btn pricing-btn-outline">Jetzt starten →</a>
+  <form class="contact-form" id="contactForm" novalidate>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="name" placeholder="Dein Name" required>
+      </div>
+      <div class="form-group">
+        <label for="cf-email">E-Mail</label>
+        <input type="email" id="cf-email" name="email" placeholder="deine@email.de" required>
+      </div>
     </div>
-
-    <!-- PRO (Featured) -->
-    <div class="pricing-card featured">
-      <span class="pricing-badge">Empfohlen</span>
-      <p class="pricing-name">PRO</p>
-      <p class="pricing-subtitle">Monatlich</p>
-      <p class="pricing-price">1.490€</p>
-      <p class="pricing-period">pro Monat</p>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-features">
-        <li>2 Objekte pro Monat</li>
-        <li>Listing Video + Reels pro Objekt</li>
-        <li>4 Personal Brand Reels</li>
-        <li>Content-Strategie</li>
-      </ul>
-      <a href="#booking" class="pricing-btn pricing-btn-filled">Jetzt starten →</a>
+    <div class="form-group">
+      <label for="cf-phone">Telefon <span class="form-optional">(optional)</span></label>
+      <input type="tel" id="cf-phone" name="phone" placeholder="+49 ...">
     </div>
-
-    <!-- INDIVIDUELL -->
-    <div class="pricing-card">
-      <p class="pricing-name">INDIVIDUELL</p>
-      <p class="pricing-subtitle">Monatlich</p>
-      <p class="pricing-price" style="font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:0.01em;">Nach Absprache</p>
-      <p class="pricing-period">&nbsp;</p>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-features">
-        <li>Alles aus Starter &amp; Pro inklusive</li>
-        <li>Vollständig auf euch zugeschnitten</li>
-        <li>Umfang &amp; Leistungen individuell abgestimmt</li>
-        <li>Wöchentlicher Call</li>
-      </ul>
-      <a href="#booking" class="pricing-btn pricing-btn-outline">Jetzt anfragen →</a>
+    <div class="form-group">
+      <label for="cf-msg">Deine Anfrage</label>
+      <textarea id="cf-msg" name="message" rows="5" placeholder="Was interessiert dich? Welches Objekt, welche Leistung?" required></textarea>
     </div>
-
+    <button type="submit" class="btn-primary contact-submit">Anfrage senden →</button>
+  </form>
+  <div class="form-success" id="formSuccess">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    E-Mail geöffnet – schick sie ab und wir melden uns bald bei dir!
   </div>
 </section>
 
@@ -967,7 +879,7 @@
       <li>Individuelle Strategie-Empfehlung</li>
       <li>Sofort buchbar – wähle deinen Wunschtermin</li>
     </ul>
-    <a href="#pakete" class="btn-outline-white">Pakete ansehen</a>
+    <a href="#pakete" class="btn-outline-white">Anfrage stellen</a>
   </div>
   <div class="booking-right">
     <div class="calendly-inline-widget" data-url="https://calendly.com/tribestudio-support/30min" style="min-width:320px;height:700px;"></div>
@@ -989,7 +901,7 @@
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#pakete">Pakete</a></li>
+        <li><a href="#pakete">Anfrage</a></li>
         <li><a href="#process">Prozess</a></li>
       </ul>
     </div>
@@ -1233,7 +1145,7 @@
   gsap.from('.stat-item', { scrollTrigger: { trigger: '.stats-bar', ...st }, opacity: 0, y: 30, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
   gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 0.8, ease: 'power3.out' });
   gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.1, duration: 0.6, ease: 'power2.out' });
-  gsap.from('.pricing-card', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, scale: 0.95, stagger: 0.1, duration: 0.7, ease: 'power2.out' });
+  gsap.from('.contact-form', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, y: 30, duration: 0.8, ease: 'power2.out' });
   gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
   gsap.from('.booking-left', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, x: -40, duration: 0.8, ease: 'power2.out' });
   gsap.from('.booking-right', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, x: 40, duration: 0.8, ease: 'power2.out' });
@@ -1256,6 +1168,22 @@
     if (e.target === document.getElementById('datenschutz-modal')) closeDatenschutz();
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDatenschutz(); });
+
+  // Contact form → mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const msg = document.getElementById('cf-msg').value.trim();
+    if (!name || !email || !msg) return;
+    const subject = encodeURIComponent('Neue Anfrage über tribestudio.de');
+    const body = encodeURIComponent(
+      `Name: ${name}\nE-Mail: ${email}\nTelefon: ${phone || '–'}\n\nNachricht:\n${msg}`
+    );
+    window.location.href = `mailto:support@tribestudio.de?subject=${subject}&body=${body}`;
+    document.getElementById('formSuccess').classList.add('visible');
+  });
 
   // Prevent Lenis from intercepting scroll events inside the modal
   const dpBox = document.querySelector('.datenschutz-box');
