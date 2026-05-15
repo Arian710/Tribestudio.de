@@ -326,147 +326,68 @@
     }
     .carousel-btn:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* ===== SERVICES — Canvas Frame Animation ===== */
-    #services-wrapper { height: 700vh; position: relative; }
+    /* ===== SERVICES ===== */
+    #services { background: #050d1f; padding: 6rem 5rem; }
 
-    #services {
-      position: sticky; top: 0; height: 100vh; overflow: hidden;
-      background: #050d1f;
-    }
+    .services-header { margin-bottom: 3.5rem; }
 
-    #services-canvas {
-      position: absolute; inset: 0; width: 100%; height: 100%; display: block;
-      background: #050d1f;
+    .services-list {
+      list-style: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
 
-    /* Loading overlay */
-    #svc-loader {
-      position: absolute; inset: 0; z-index: 20;
-      background: #050d1f;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1.4rem;
-      transition: opacity 0.6s ease;
-    }
-    #svc-loader.hidden { opacity: 0; pointer-events: none; }
-    .svc-loader-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.28em;
-      text-transform: uppercase; color: rgba(255,255,255,0.4);
-    }
-    .svc-loader-track {
-      width: 200px; height: 1px;
-      background: rgba(255,255,255,0.1); position: relative; overflow: hidden;
-    }
-    .svc-loader-fill {
-      position: absolute; top: 0; left: 0; height: 100%; width: 0%;
-      background: #0047FF; transition: width 0.1s linear;
-    }
-
-    /* Gradient tint over canvas */
-    .svc-tint {
-      position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        rgba(5,13,31,0.55) 0%,
-        rgba(5,13,31,0.10) 45%,
-        rgba(5,13,31,0.65) 100%
-      );
-    }
-
-    /* Section header top-left */
-    .svc-header {
-      position: absolute; top: 2rem; left: 3rem; z-index: 10; pointer-events: none;
-    }
-    .svc-header .section-tag {
-      font-size: 0.7rem; color: var(--blue);
-    }
-    .svc-header .section-headline {
-      font-size: 2rem;
-    }
-
-    /* Phase text overlays bottom-left */
-    .svc-phase-wrap {
-      position: absolute; bottom: 3rem; left: 3rem;
-      z-index: 10;
-    }
-    .svc-phase {
-      position: absolute; bottom: 0; left: 0;
-      opacity: 0; transform: translateY(14px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      pointer-events: none;
-    }
-    .svc-phase.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .svc-phase-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.2em;
-      color: var(--blue); margin-bottom: 0.5rem; text-transform: uppercase;
-    }
-    .svc-phase-title {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 2.5rem;
-      color: #fff; white-space: nowrap; line-height: 1.05; margin-bottom: 0.55rem;
-    }
-    .svc-phase-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem; color: rgba(255,255,255,0.6);
-      line-height: 1.6; max-width: 400px;
-    }
-
-    /* Progress dots right edge */
-    .svc-dots {
-      position: absolute; right: 2rem; top: 50%;
-      transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 0.8rem; z-index: 10;
-    }
-    .svc-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.35); background: transparent;
-      cursor: pointer; transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, width 0.3s, height 0.3s;
-    }
-    .svc-dot.active {
-      width: 10px; height: 10px;
-      background: #0047FF; border-color: #0047FF;
-      box-shadow: 0 0 10px rgba(0,71,255,0.6);
-    }
-
-    /* CTA overlay */
-    #svc-cta-wrap {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20; pointer-events: none; text-align: center;
-    }
-    #svc-cta {
-      opacity: 0; transform: translateY(10px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    #svc-cta.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-    .cam-cta-super {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
-      color: #0047FF; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem;
-    }
-    .cam-cta-headline {
-      font-family: 'DM Sans', sans-serif; font-weight: 800;
-      font-size: clamp(2rem, 3.8vw, 3.4rem);
-      color: #fff; letter-spacing: -0.02em;
-      line-height: 1.05; margin-bottom: 1.75rem;
-    }
-
-    /* Mobile services fallback */
-    .cam-mobile-list { display: none; }
-    .cam-mobile-item {
-      display: flex; gap: 1.25rem; padding: 1.5rem 0;
+    .service-item {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr 2rem;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
       border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.25s;
+      border-radius: 4px;
     }
-    .cam-mobile-num {
-      font-family: 'DM Sans', sans-serif; font-size: 2.5rem;
-      color: rgba(0,71,255,0.3); line-height: 1; flex-shrink: 0; width: 48px;
+    .service-item:hover { background: rgba(0,71,255,0.05); }
+
+    .service-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.15em;
+      color: var(--blue); line-height: 1;
     }
-    .cam-mobile-title {
-      font-family: 'DM Sans', sans-serif; font-size: 1.4rem;
-      color: #fff; letter-spacing: 0.04em; margin-bottom: 0.3rem;
+
+    .service-body { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      color: #fff; letter-spacing: 0.05em;
+      text-transform: uppercase; line-height: 1.05;
     }
-    .cam-mobile-desc { font-size: 0.87rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
+
+    .service-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.5;
+    }
+
+    .service-arrow {
+      color: rgba(255,255,255,0.15);
+      font-size: 1.1rem; text-align: right;
+      transition: color 0.25s, transform 0.25s;
+      display: block;
+    }
+    .service-item:hover .service-arrow {
+      color: var(--blue);
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      #services { padding: 4rem 1.5rem; }
+      .service-item { grid-template-columns: 2.5rem 1fr; gap: 1.25rem; padding: 1.5rem 0.5rem; }
+      .service-arrow { display: none; }
+      .service-title { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+    }
 
     /* ===== PRICING (light) ===== */
     #pakete { background: var(--white); }
@@ -738,10 +659,7 @@
       .portfolio-card { flex: 0 0 clamp(220px, 65vw, 300px); width: clamp(220px, 65vw, 300px); height: clamp(300px, 88vw, 420px); }
       .card-media { width: 100%; height: 100%; }
       .carousel-arrows { padding-right: 1.5rem; }
-      #services-wrapper { height: auto; }
-      #services { position: static; height: auto; padding: 4rem 1.5rem; }
-      #services-canvas, .svc-tint, .svc-header, .svc-dots, .svc-phase-wrap, #svc-cta-wrap, #svc-loader { display: none; }
-      .cam-mobile-list { display: block; margin-top: 2rem; }
+
       .pricing-grid {
         display: flex;
         overflow-x: auto;
@@ -912,103 +830,40 @@
   </div>
 </section>
 
-<!-- SERVICES — Canvas Frame Animation -->
-<div id="services-wrapper">
-  <div id="services">
-    <canvas id="services-canvas"></canvas>
-
-    <!-- Loading overlay -->
-    <div id="svc-loader">
-      <p class="svc-loader-label">Wird geladen</p>
-      <div class="svc-loader-track">
-        <div class="svc-loader-fill" id="svc-loader-bar"></div>
-      </div>
-    </div>
-
-    <!-- Gradient tint -->
-    <div class="svc-tint"></div>
-
-    <!-- Section header top-left -->
-    <div class="svc-header">
-      <span class="section-tag light">Was wir machen</span>
-      <h2 class="section-headline white">UNSERE<br>LEISTUNGEN.</h2>
-    </div>
-
-    <!-- Phase text overlays bottom-left -->
-    <div class="svc-phase-wrap">
-      <div class="svc-phase active" data-phase="0">
-        <p class="svc-phase-num">01 / 05</p>
-        <h3 class="svc-phase-title">CINEMATIC VIDEO PRODUKTION</h3>
-        <p class="svc-phase-desc">4K Listing-Videos die Anfragen generieren</p>
-      </div>
-      <div class="svc-phase" data-phase="1">
-        <p class="svc-phase-num">02 / 05</p>
-        <h3 class="svc-phase-title">SOCIAL MEDIA REELS</h3>
-        <p class="svc-phase-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok</p>
-      </div>
-      <div class="svc-phase" data-phase="2">
-        <p class="svc-phase-num">03 / 05</p>
-        <h3 class="svc-phase-title">PERSONAL BRAND VIDEOS</h3>
-        <p class="svc-phase-desc">Werde der Makler den alle kennen</p>
-      </div>
-      <div class="svc-phase" data-phase="3">
-        <p class="svc-phase-num">04 / 05</p>
-        <h3 class="svc-phase-title">DROHNENAUFNAHMEN</h3>
-        <p class="svc-phase-desc">Luftaufnahmen die das Objekt in Szene setzen</p>
-      </div>
-      <div class="svc-phase" data-phase="4">
-        <p class="svc-phase-num">05 / 05</p>
-        <h3 class="svc-phase-title">IMMOBILIEN LANDINGPAGE</h3>
-        <p class="svc-phase-desc">Scroll-Animationen, Calendly, fertig in 48h</p>
-      </div>
-    </div>
-
-    <!-- CTA — final phase -->
-    <div id="svc-cta-wrap">
-      <div id="svc-cta">
-        <p class="cam-cta-super">BEREIT FÜR</p>
-        <h2 class="cam-cta-headline">CONTENT DER VERKAUFT?</h2>
-        <a href="#booking" class="btn-primary">Kostenloses Erstgespräch →</a>
-      </div>
-    </div>
-
-    <!-- Progress dots right edge -->
-    <div class="svc-dots">
-      <div class="svc-dot active" data-dot="0"></div>
-      <div class="svc-dot" data-dot="1"></div>
-      <div class="svc-dot" data-dot="2"></div>
-      <div class="svc-dot" data-dot="3"></div>
-      <div class="svc-dot" data-dot="4"></div>
-    </div>
-
-    <!-- Mobile fallback -->
-    <div class="cam-mobile-list">
-      <span class="section-tag light">Was wir machen</span>
-      <h2 class="section-headline white" style="margin-bottom:2rem;">UNSERE<br>LEISTUNGEN.</h2>
-      <div class="cam-mobile-item">
-        <span class="cam-mobile-num">01</span>
-        <div><p class="cam-mobile-title">CINEMATIC VIDEO PRODUKTION</p><p class="cam-mobile-desc">4K Listing-Videos die Anfragen generieren</p></div>
-      </div>
-      <div class="cam-mobile-item">
-        <span class="cam-mobile-num">02</span>
-        <div><p class="cam-mobile-title">SOCIAL MEDIA REELS</p><p class="cam-mobile-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok</p></div>
-      </div>
-      <div class="cam-mobile-item">
-        <span class="cam-mobile-num">03</span>
-        <div><p class="cam-mobile-title">PERSONAL BRAND VIDEOS</p><p class="cam-mobile-desc">Werde der Makler den alle kennen</p></div>
-      </div>
-      <div class="cam-mobile-item">
-        <span class="cam-mobile-num">04</span>
-        <div><p class="cam-mobile-title">DROHNENAUFNAHMEN</p><p class="cam-mobile-desc">Luftaufnahmen die das Objekt in Szene setzen</p></div>
-      </div>
-      <div class="cam-mobile-item">
-        <span class="cam-mobile-num">05</span>
-        <div><p class="cam-mobile-title">IMMOBILIEN LANDINGPAGE</p><p class="cam-mobile-desc">Scroll-Animationen, Calendly, fertig in 48h</p></div>
-      </div>
-    </div>
-
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <span class="section-tag light">Was wir machen</span>
+    <h2 class="section-headline white">UNSERE LEISTUNGEN.</h2>
   </div>
-</div>
+  <ul class="services-list">
+    <li class="service-item">
+      <span class="service-num">01</span>
+      <div class="service-body"><span class="service-title">Cinematic Video Produktion</span><span class="service-desc">4K Listing-Videos die Anfragen generieren</span></div>
+      <span class="service-arrow">→</span>
+    </li>
+    <li class="service-item">
+      <span class="service-num">02</span>
+      <div class="service-body"><span class="service-title">Social Media Reels</span><span class="service-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok</span></div>
+      <span class="service-arrow">→</span>
+    </li>
+    <li class="service-item">
+      <span class="service-num">03</span>
+      <div class="service-body"><span class="service-title">Personal Brand Videos</span><span class="service-desc">Werde der Makler den alle kennen</span></div>
+      <span class="service-arrow">→</span>
+    </li>
+    <li class="service-item">
+      <span class="service-num">04</span>
+      <div class="service-body"><span class="service-title">Drohnenaufnahmen</span><span class="service-desc">Luftaufnahmen die das Objekt in Szene setzen</span></div>
+      <span class="service-arrow">→</span>
+    </li>
+    <li class="service-item">
+      <span class="service-num">05</span>
+      <div class="service-body"><span class="service-title">Immobilien Landingpage</span><span class="service-desc">Scroll-Animationen, Calendly, fertig in 48h</span></div>
+      <span class="service-arrow">→</span>
+    </li>
+  </ul>
+</section>
 
 
 <!-- PRICING (light) -->
@@ -1377,95 +1232,7 @@
 
   gsap.from('.stat-item', { scrollTrigger: { trigger: '.stats-bar', ...st }, opacity: 0, y: 30, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
   gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 0.8, ease: 'power3.out' });
-  // ── Canvas services animation ─────────────────────────────────
-  (function() {
-    const svcWrapper = document.getElementById('services-wrapper');
-    if (!svcWrapper || window.innerWidth <= 768) return;
-
-    const canvas    = document.getElementById('services-canvas');
-    const ctx       = canvas.getContext('2d');
-    const loader    = document.getElementById('svc-loader');
-    const barEl     = document.getElementById('svc-loader-bar');
-    const phases    = document.querySelectorAll('.svc-phase');
-    const dotsEls   = document.querySelectorAll('.svc-dot');
-    const ctaEl     = document.getElementById('svc-cta');
-
-    const FRAME_COUNT = 76;
-    const PHASE_COUNT = 5;
-    const CTA_START   = 5 / 6;
-
-    const frames = [];
-    let loaded = 0, ready = false, lastIdx = 0;
-
-    function resize() {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-      if (ready) drawFrame(frames[lastIdx]);
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    function drawFrame(img) {
-      if (!img || !img.complete) return;
-      const cw = canvas.width, ch = canvas.height;
-      const iw = img.naturalWidth, ih = img.naturalHeight;
-      if (!iw || !ih) return;
-      ctx.fillStyle = '#050d1f';
-      ctx.fillRect(0, 0, cw, ch);
-      const s = Math.max(cw / iw, ch / ih);
-      ctx.drawImage(img, (cw - iw * s) / 2, (ch - ih * s) / 2, iw * s, ih * s);
-    }
-
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = `frames/kamera/f${String(i).padStart(3, '0')}.jpg`;
-      img.onload = img.onerror = function() {
-        loaded++;
-        barEl.style.width = (loaded / FRAME_COUNT * 100) + '%';
-        if (loaded === FRAME_COUNT) {
-          ready = true;
-          drawFrame(frames[0]);
-          setTimeout(() => loader.classList.add('hidden'), 400);
-        }
-      };
-      frames.push(img);
-    }
-
-    function update(progress) {
-      const inCta = progress >= CTA_START;
-      lastIdx = inCta
-        ? FRAME_COUNT - 1
-        : Math.min(FRAME_COUNT - 1, Math.round(progress / CTA_START * (FRAME_COUNT - 1)));
-      if (ready) drawFrame(frames[lastIdx]);
-
-      const phase = inCta ? -1 : Math.min(PHASE_COUNT - 1, Math.floor(progress / CTA_START * PHASE_COUNT));
-      phases.forEach((el, i) => el.classList.toggle('active', i === phase));
-      dotsEls.forEach((d, i) => d.classList.toggle('active', i === phase));
-      if (ctaEl) ctaEl.classList.toggle('active', inCta);
-    }
-
-    ScrollTrigger.create({
-      trigger: '#services-wrapper',
-      start: 'top top',
-      end: 'bottom bottom',
-      snap: {
-        snapTo: 1 / (phases.length - 1),
-        duration: { min: 0.2, max: 0.6 },
-        delay: 0.08,
-        ease: 'power2.inOut'
-      },
-      onUpdate(self) { update(self.progress); }
-    });
-
-    dotsEls.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        const fraction = (i + 0.5) / PHASE_COUNT * CTA_START;
-        const top    = svcWrapper.getBoundingClientRect().top + window.scrollY;
-        const travel = svcWrapper.offsetHeight - window.innerHeight;
-        lenis.scrollTo(top + fraction * travel, { duration: 1.2 });
-      });
-    });
-  })();
+  gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.1, duration: 0.6, ease: 'power2.out' });
   gsap.from('.pricing-card', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, scale: 0.95, stagger: 0.1, duration: 0.7, ease: 'power2.out' });
   gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
   gsap.from('.booking-left', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, x: -40, duration: 0.8, ease: 'power2.out' });
