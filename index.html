@@ -923,9 +923,40 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Tribe Studio. Alle Rechte vorbehalten. | <a href="#">Impressum</a> | <a href="#" onclick="openDatenschutz(); return false;">Datenschutz</a></p>
+    <p>© 2026 Tribe Studio. Alle Rechte vorbehalten. | <a href="#" onclick="openImpressum(); return false;">Impressum</a> | <a href="#" onclick="openDatenschutz(); return false;">Datenschutz</a></p>
   </div>
 </footer>
+
+<!-- IMPRESSUM MODAL -->
+<div id="impressum-modal" onclick="closeImpressumOutside(event)">
+  <div class="datenschutz-box">
+    <button class="datenschutz-close" onclick="closeImpressum()" aria-label="Schließen">×</button>
+    <div class="datenschutz-content">
+      <h1>Impressum</h1>
+
+      <p>GbR Pascal Brunner und Arian Shahidi<br>
+      Am alten E-Werk 5a<br>
+      64625 Bensheim</p>
+
+      <p><strong>Vertreten durch:</strong><br>
+      Pascal Brunner<br>
+      Arian Shahidi</p>
+
+      <h2>Kontakt</h2>
+      <p>Telefon: <a href="tel:+4917645688302">+49 176 45688302</a><br>
+      E-Mail: <a href="mailto:support@tribestudio.de">support@tribestudio.de</a></p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+      DE457187950</p>
+
+      <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+      <p>Quelle: <a href="https://www.e-recht24.de/impressum-generator.html" target="_blank" rel="noopener">https://www.e-recht24.de/impressum-generator.html</a></p>
+    </div>
+  </div>
+</div>
 
 <!-- DATENSCHUTZ MODAL -->
 <div id="datenschutz-modal" onclick="closeDatenschutzOutside(event)">
@@ -1154,6 +1185,20 @@
     gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 35, duration: 0.8, ease: 'power3.out' });
   });
 
+  function openImpressum() {
+    document.getElementById('impressum-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    lenis.stop();
+  }
+  function closeImpressum() {
+    document.getElementById('impressum-modal').classList.remove('active');
+    document.body.style.overflow = '';
+    lenis.start();
+  }
+  function closeImpressumOutside(e) {
+    if (e.target === document.getElementById('impressum-modal')) closeImpressum();
+  }
+
   function openDatenschutz() {
     document.getElementById('datenschutz-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1167,7 +1212,7 @@
   function closeDatenschutzOutside(e) {
     if (e.target === document.getElementById('datenschutz-modal')) closeDatenschutz();
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDatenschutz(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDatenschutz(); closeImpressum(); } });
 
   // Contact form → mailto
   document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -1185,10 +1230,11 @@
     document.getElementById('formSuccess').classList.add('visible');
   });
 
-  // Prevent Lenis from intercepting scroll events inside the modal
-  const dpBox = document.querySelector('.datenschutz-box');
-  dpBox.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
-  dpBox.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
+  // Prevent Lenis from intercepting scroll events inside modals
+  document.querySelectorAll('.datenschutz-box').forEach(box => {
+    box.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
+    box.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
+  });
 </script>
 </body>
 </html>
