@@ -616,13 +616,13 @@
       .portfolio-card { flex: 0 0 clamp(220px, 65vw, 300px); width: clamp(220px, 65vw, 300px); height: clamp(300px, 88vw, 420px); }
       .card-media { width: 100%; height: 100%; }
       .carousel-arrows { padding-right: 1.5rem; }
-
       .process-grid { grid-template-columns: 1fr; }
       #booking { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       footer { padding: 4rem 1.5rem 2rem; }
       .scroll-indicator { display: none; }
-      .pricing-intro { flex-direction: column; }
+      /* prevent iOS Safari from zooming into form inputs */
+      .form-group input, .form-group textarea { font-size: 16px; }
     }
   </style>
 </head>
@@ -653,9 +653,9 @@
       support@tribestudio.de
     </a>
     <a href="#booking" class="nav-cta">Jetzt starten →</a>
-    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
-      <span></span><span></span><span></span>
-    </div>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
