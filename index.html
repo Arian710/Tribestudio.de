@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -465,24 +462,23 @@
     .step-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--text-dark); margin-bottom: 0.5rem; }
     .step-desc { font-size: 0.88rem; color: var(--gray-dark); line-height: 1.65; }
 
-    /* ===== BOOKING (dark) ===== */
+    /* ===== BOOKING CTA (dark) ===== */
     #booking {
       background: var(--black);
-      display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 8rem 5rem;
     }
     .booking-headline {
       font-family: 'DM Sans', sans-serif; font-weight: 800;
-      font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05;
-      letter-spacing: -0.02em; margin-bottom: 1.75rem; color: var(--white);
+      font-size: clamp(2.8rem, 6vw, 5.5rem); line-height: 1.0;
+      letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--white);
     }
     .booking-headline span { color: var(--blue-light); }
-    .booking-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
-    .booking-bullets li {
-      font-size: 0.95rem; color: rgba(255,255,255,0.6);
-      display: flex; align-items: center; gap: 0.75rem;
+    .booking-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.5);
+      max-width: 420px; line-height: 1.65; margin-bottom: 2.5rem;
     }
-    .booking-bullets li::before { content: '→'; color: var(--blue-light); }
-    .calendly-inline-widget { border-radius: 12px; overflow: hidden; min-height: 650px; }
+    .booking-cta { font-size: 1.05rem; padding: 1.1rem 2.5rem; }
 
     /* ===== FOOTER (dark) ===== */
     footer { background: var(--dark); padding: 5rem 5rem 2rem; position: relative; }
@@ -617,7 +613,7 @@
       .card-media { width: 100%; height: 100%; }
       .carousel-arrows { padding-right: 1.5rem; }
       .process-grid { grid-template-columns: 1fr; }
-      #booking { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+      #booking { padding: 5rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       footer { padding: 4rem 1.5rem 2rem; }
       .scroll-indicator { display: none; }
@@ -652,7 +648,7 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
       support@tribestudio.de
     </a>
-    <a href="#booking" class="nav-cta">Jetzt starten →</a>
+    <a href="#pakete" class="nav-cta">Angebot holen →</a>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()">
     <span></span><span></span><span></span>
@@ -700,7 +696,7 @@
         </li>
       </ul>
       <div class="hero-cta-row">
-        <a href="#booking" class="btn-primary">Kostenloses Erstgespräch →</a>
+        <a href="#pakete" class="btn-primary">Angebot holen →</a>
         <a href="#portfolio" class="btn-outline-white">Unsere Arbeiten</a>
       </div>
     </div>
@@ -801,7 +797,7 @@
     </li>
     <li class="service-item">
       <span class="service-num">05</span>
-      <div class="service-body"><span class="service-title">Immobilien Landingpage</span><span class="service-desc">Scroll-Animationen, Calendly, fertig in 48h</span></div>
+      <div class="service-body"><span class="service-title">Immobilien Landingpage</span><span class="service-desc">Scroll-Animationen, Kontaktformular, fertig in 48h</span></div>
       <span class="service-arrow">→</span>
     </li>
   </ul>
@@ -870,22 +866,12 @@
   </div>
 </section>
 
-<!-- BOOKING (dark) -->
+<!-- BOOKING CTA (dark) -->
 <section id="booking">
-  <div class="booking-left">
-    <span class="section-tag light">Lass uns reden</span>
-    <h2 class="booking-headline">BEREIT FÜR<br />CONTENT DER<br /><span>WIRKT?</span></h2>
-    <ul class="booking-bullets">
-      <li>Kostenloses 30-Minuten Erstgespräch</li>
-      <li>Keine Verpflichtung, nur echte Einblicke</li>
-      <li>Individuelle Strategie-Empfehlung</li>
-      <li>Sofort buchbar – wähle deinen Wunschtermin</li>
-    </ul>
-    <a href="#pakete" class="btn-outline-white">Anfrage stellen</a>
-  </div>
-  <div class="booking-right">
-    <div class="calendly-inline-widget" data-url="https://calendly.com/tribestudio-support/30min" style="min-width:320px;height:700px;"></div>
-  </div>
+  <span class="section-tag light">Bereit?</span>
+  <h2 class="booking-headline">LASS UNS<br /><span>LOSLEGEN.</span></h2>
+  <p class="booking-sub">Beschreib uns kurz dein Projekt – wir melden uns innerhalb von 24 Stunden.</p>
+  <a href="#pakete" class="btn-primary booking-cta">Angebot holen →</a>
 </section>
 
 <!-- FOOTER -->
@@ -911,7 +897,7 @@
       <p class="footer-col-title">Kontakt</p>
       <ul class="footer-links">
         <li><a href="mailto:support@tribestudio.de">support@tribestudio.de</a></li>
-        <li><a href="#booking">Termin buchen</a></li>
+        <li><a href="#pakete">Angebot holen</a></li>
       </ul>
     </div>
     <div>
@@ -1084,7 +1070,6 @@
         <li><strong>Rechtsgrundlagen:</strong> Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO); Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
       </ul>
       <p><strong>Google Fonts:</strong> Bezug von Schriften zum Zwecke einer technisch sicheren und effizienten Nutzung. Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland; <a href="https://policies.google.com/privacy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Data Privacy Framework (DPF).</p>
-      <p><strong>Calendly:</strong> Wir nutzen Calendly zur Bereitstellung eines Online-Terminbuchungssystems. Bei der Nutzung des Buchungswidgets werden personenbezogene Daten (Name, E-Mail-Adresse, ggf. weitere Angaben) direkt an Calendly übermittelt und dort verarbeitet. Dienstanbieter: Calendly LLC, 271 17th St NW, Atlanta, GA 30363, USA; <a href="https://calendly.com/privacy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Standardvertragsklauseln.</p>
       <p><strong>Vercel:</strong> Unsere Website wird über die Infrastruktur von Vercel gehostet. Vercel verarbeitet dabei technische Zugriffsdaten (u.&nbsp;a. IP-Adressen, Browsertyp, Zugriffszeiten) zur Bereitstellung und Absicherung des Onlineangebots. Dienstanbieter: Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA; <a href="https://vercel.com/legal/privacy-policy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Standardvertragsklauseln.</p>
 
       <h2 id="dp-aenderung">Änderung und Aktualisierung</h2>
@@ -1180,8 +1165,7 @@
   gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.1, duration: 0.6, ease: 'power2.out' });
   gsap.from('.contact-form', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, y: 30, duration: 0.8, ease: 'power2.out' });
   gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
-  gsap.from('.booking-left', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, x: -40, duration: 0.8, ease: 'power2.out' });
-  gsap.from('.booking-right', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, x: 40, duration: 0.8, ease: 'power2.out' });
+  gsap.from('#booking .booking-headline, #booking .booking-sub, #booking .booking-cta', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, y: 30, stagger: 0.15, duration: 0.8, ease: 'power2.out' });
 
   document.querySelectorAll('.section-headline').forEach(el => {
     gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 35, duration: 0.8, ease: 'power3.out' });
