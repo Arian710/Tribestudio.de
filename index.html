@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tribe Studio – Content, der verkauft.</title>
+  <title>Tribe Studio – Cinematische Immobilienvermarktung.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,18 +17,14 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --green: #C4704A;
-      --green-light: #D4845E;
       --green-deep: #1A3A2E;
+      --green: #2D5A43;
+      --green-light: #4A7C62;
       --green-pale: #8FB09E;
-      --terracotta: #C4704A;
-      --terracotta-light: #D4845E;
-      --terracotta-deep: #8a4533;
-      --forest: #2D5A43;
-      --forest-light: #4A7C62;
+      --sand: #D9CBB3;
+      --sand-light: #EDE6D8;
       --cream: #F5F2EA;
-      --cream-dark: #EDE9DF;
-      --black: #0D0F0C;
+      --black: #0A0F0C;
       --dark: #0d1208;
       --white: #FFFFFF;
       --light: #F5F2EA;
@@ -50,7 +46,7 @@
     /* ===== NAV ===== */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 1rem 3rem;
+      padding: 1.25rem 3rem;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
@@ -58,24 +54,25 @@
     }
     nav.scrolled {
       backdrop-filter: blur(20px);
-      background: rgba(13, 18, 8, 0.92);
-      border-bottom: 1px solid rgba(245,242,234,0.08);
+      background: rgba(10,15,12,0.93);
+      border-bottom: 1px solid rgba(217,203,179,0.08);
     }
-
     .nav-links {
       display: flex; align-items: center; gap: 2rem; list-style: none;
     }
     .nav-links a {
-      color: var(--white); text-decoration: none;
-      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase;
       position: relative; padding-bottom: 3px;
       transition: color 0.3s;
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--green);
-      transition: width 0.3s ease;
+      width: 0; height: 1px; background: var(--sand);
+      transition: width 0.35s ease;
     }
+    .nav-links a:hover { color: var(--white); }
     .nav-links a:hover::after { width: 100%; }
 
     .nav-logo {
@@ -83,28 +80,25 @@
       text-decoration: none; justify-content: center; height: 38px;
     }
     .nav-logo img { height: 38px; width: auto; }
-    .nav-logo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500; font-size: 1.1rem; letter-spacing: 0.22em; color: var(--cream);
-    }
 
     .nav-right {
       display: flex; align-items: center; gap: 1rem; justify-content: flex-end;
     }
     .nav-email {
-      color: rgba(255,255,255,0.65); font-size: 0.82rem;
+      color: rgba(255,255,255,0.45); font-size: 0.8rem;
       text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
       transition: color 0.3s;
     }
-    .nav-email:hover { color: var(--white); }
+    .nav-email:hover { color: rgba(255,255,255,0.8); }
     .nav-cta {
-      background: var(--green); color: var(--white); border: none;
-      padding: 0.6rem 1.25rem; border-radius: 8px;
-      font-size: 0.85rem; font-weight: 700; cursor: pointer;
-      text-decoration: none; transition: background 0.3s, transform 0.2s;
-      white-space: nowrap;
+      background: transparent; color: var(--sand);
+      border: 1px solid rgba(217,203,179,0.35);
+      padding: 0.55rem 1.25rem; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.3s;
+      white-space: nowrap; letter-spacing: 0.08em; text-transform: uppercase;
     }
-    .nav-cta:hover { background: #8a4533; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--sand); color: var(--green-deep); border-color: var(--sand); }
 
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); transition: all 0.3s; }
@@ -119,11 +113,12 @@
     }
     .mobile-overlay.active { transform: translateX(0); }
     .mobile-overlay a {
-      color: var(--white); text-decoration: none;
-      font-family: 'DM Sans', sans-serif; font-size: 3rem; letter-spacing: 0.1em;
-      transition: opacity 0.3s;
+      color: var(--cream); text-decoration: none;
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+      font-weight: 600; letter-spacing: 0.06em;
+      transition: color 0.3s;
     }
-    .mobile-overlay a:hover { opacity: 0.7; }
+    .mobile-overlay a:hover { color: var(--sand); }
 
     /* ===== HERO ===== */
     #hero {
@@ -132,7 +127,6 @@
       background: var(--black);
       padding: 0 5rem;
     }
-
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg-video {
       position: absolute; inset: 0;
@@ -142,92 +136,86 @@
     .hero-bg-grad {
       position: absolute; inset: 0;
       background: linear-gradient(105deg,
-        rgba(10,9,8,0.68) 0%,
+        rgba(10,9,8,0.72) 0%,
         rgba(10,9,8,0.28) 55%,
         rgba(10,9,8,0.04) 100%);
     }
-
     @keyframes fadeIn { to { opacity: 1; } }
 
-    .hero-inner {
-      width: 100%; max-width: 1400px;
-      position: relative; z-index: 1;
-    }
-
+    .hero-inner { width: 100%; max-width: 1400px; position: relative; z-index: 1; }
     .hero-content {
-      max-width: 700px;
-      display: flex; flex-direction: column;
-      opacity: 0;
-      animation: fadeIn 0.1s 2.5s forwards;
+      max-width: 740px; display: flex; flex-direction: column;
+      opacity: 0; animation: fadeIn 0.1s 2.8s forwards;
     }
-
     .hero-location {
       display: flex; align-items: center; gap: 0.5rem;
-      color: rgba(255,255,255,0.55); font-size: 0.85rem; font-weight: 500;
-      margin-bottom: 1.5rem; letter-spacing: 0.02em;
+      color: var(--sand); font-size: 0.72rem; font-weight: 500;
+      margin-bottom: 2rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace; opacity: 0.85;
     }
     .hero-location svg { flex-shrink: 0; }
 
     .hero-headline {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      line-height: 0.92; letter-spacing: 0.01em;
-      color: var(--cream); margin-bottom: 2rem; max-width: 700px;
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      line-height: 0.96; letter-spacing: 0.01em;
+      color: var(--cream); margin-bottom: 2.5rem;
     }
     .hero-headline .line-1,
     .hero-headline .line-2,
-    .hero-headline .line-3 { display: block; white-space: nowrap; }
-    .hero-headline .accent { color: var(--green-light); }
+    .hero-headline .line-3 { display: block; }
+    .hero-headline .accent { color: var(--sand); }
 
     .hero-subtext {
-      color: rgba(245,242,234,0.72);
-      font-size: clamp(1rem, 1.2vw, 1.15rem);
-      line-height: 1.6; max-width: 480px; margin-bottom: 1.5rem;
+      color: rgba(245,242,234,0.62);
+      font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+      line-height: 1.8; max-width: 480px; margin-bottom: 2rem;
     }
-
     .hero-bullets {
       list-style: none; display: flex; flex-direction: column;
-      gap: 0.6rem; margin-bottom: 2rem;
+      gap: 0.8rem; margin-bottom: 2.75rem;
     }
     .hero-bullets li {
       display: flex; align-items: center; gap: 0.75rem;
-      color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 400;
+      color: rgba(245,242,234,0.78); font-size: 0.9rem;
     }
     .hero-bullets li .bullet-icon {
-      width: 24px; height: 24px; border-radius: 5px;
-      background: rgba(196,112,74,0.2); border: 1px solid rgba(196,112,74,0.35);
+      width: 22px; height: 22px; border-radius: 4px;
+      background: rgba(45,90,67,0.28); border: 1px solid rgba(74,124,98,0.38);
       display: inline-flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: var(--green-light);
+      flex-shrink: 0; color: var(--sand);
     }
-
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .btn-primary {
       background: var(--green); color: var(--white);
-      padding: 1rem 2rem; border-radius: 10px;
-      font-size: 0.95rem; font-weight: 700; cursor: pointer;
-      text-decoration: none; transition: all 0.3s;
+      padding: 1rem 2.25rem; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.4s;
       display: inline-flex; align-items: center; gap: 0.4rem;
-      border: none;
+      border: none; letter-spacing: 0.06em;
     }
-    .btn-primary:hover { background: #8a4533; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(196,112,74,0.4), 0 0 24px rgba(196,112,74,0.25); }
-
+    .btn-primary:hover {
+      background: var(--green-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(26,58,46,0.35);
+    }
     .btn-outline-white {
-      background: transparent; color: var(--white);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 1rem 2rem; border-radius: 10px;
-      font-size: 0.95rem; font-weight: 600; cursor: pointer;
-      text-decoration: none; transition: all 0.3s; display: inline-block;
+      background: transparent; color: rgba(245,242,234,0.75);
+      border: 1px solid rgba(245,242,234,0.18);
+      padding: 1rem 2.25rem; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 500; cursor: pointer;
+      text-decoration: none; transition: all 0.4s; display: inline-block;
+      letter-spacing: 0.04em;
     }
-    .btn-outline-white:hover { border-color: var(--green); color: var(--green-light); }
-
+    .btn-outline-white:hover { border-color: var(--sand); color: var(--sand); }
     .btn-outline-dark {
       background: transparent; color: var(--text-dark);
-      border: 1.5px solid rgba(10,12,18,0.2);
-      padding: 1rem 2rem; border-radius: 10px;
-      font-size: 0.95rem; font-weight: 600; cursor: pointer;
-      text-decoration: none; transition: all 0.3s; display: inline-block;
+      border: 1.5px solid rgba(26,58,46,0.2);
+      padding: 1rem 2.25rem; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.4s; display: inline-block;
     }
     .btn-outline-dark:hover { border-color: var(--green); color: var(--green); }
 
@@ -235,11 +223,11 @@
       position: absolute; bottom: 2.5rem; right: 4rem;
       display: flex; flex-direction: column; align-items: center; gap: 0.5rem; z-index: 1;
     }
-    .scroll-text { font-size: 0.65rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); writing-mode: vertical-rl; }
+    .scroll-text { font-size: 0.6rem; letter-spacing: 0.2em; color: rgba(217,203,179,0.35); writing-mode: vertical-rl; }
     .scroll-line {
       width: 1px; height: 50px;
-      background: linear-gradient(to bottom, var(--green), transparent);
-      animation: scrollAnim 2s ease-in-out infinite;
+      background: linear-gradient(to bottom, var(--sand), transparent);
+      animation: scrollAnim 2.5s ease-in-out infinite;
     }
     @keyframes scrollAnim {
       0%   { transform: scaleY(0); transform-origin: top; }
@@ -248,39 +236,31 @@
       100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
     }
 
-    /* ===== STATS BAR (light) ===== */
-    .stats-bar { display: none; }
-    .stat-item { flex: 1; text-align: center; padding: 0 2rem; }
-    .stat-item:not(:last-child) { border-right: 1px solid var(--light-2); }
-    .stat-number {
-      font-family: 'DM Sans', sans-serif; font-size: clamp(1rem, 1.6vw, 1.5rem);
-      color: var(--green); line-height: 1; display: block;
-    }
-    .stat-label { font-size: 0.82rem; color: var(--gray-dark); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
-
     /* ===== SHARED ===== */
-    section { padding: 6rem 5rem; }
+    section { padding: 8rem 5rem; }
     .section-tag {
       display: inline-block; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 0.75rem;
-      background: rgba(196,112,74,0.07); padding: 0.3rem 0.75rem; border-radius: 100px;
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 1rem;
+      background: rgba(45,90,67,0.08); padding: 0.3rem 0.75rem; border-radius: 100px;
     }
-    .section-tag.light { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+    .section-tag.light { color: var(--sand); background: rgba(217,203,179,0.1); }
+    .section-tag.muted { color: var(--gray-dark); background: rgba(26,58,46,0.06); }
     .section-headline {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-size: clamp(2.8rem, 5vw, 5rem);
       line-height: 1.0; letter-spacing: 0.02em;
     }
     .section-headline.dark { color: var(--text-dark); }
     .section-headline.white { color: var(--white); }
+    .section-headline.cream { color: var(--cream); }
 
-    /* ===== PORTFOLIO (light bg) ===== */
-    #portfolio { background: var(--light); padding: 6rem 0 6rem 5rem; }
-    .portfolio-header { padding-right: 5rem; margin-bottom: 3rem; }
-    .portfolio-header p { font-size: 1rem; color: var(--gray-dark); margin-top: 0.75rem; max-width: 440px; line-height: 1.65; }
+    /* ===== PORTFOLIO ===== */
+    #portfolio { background: var(--light); padding: 8rem 0 8rem 5rem; }
+    .portfolio-header { padding-right: 5rem; margin-bottom: 3.5rem; }
+    .portfolio-header p { font-size: 1rem; color: var(--gray-dark); margin-top: 1rem; max-width: 440px; line-height: 1.8; }
 
     .portfolio-carousel {
       display: flex; gap: 1.5rem; align-items: flex-start;
@@ -299,224 +279,297 @@
       scroll-snap-align: start;
       background: var(--black); cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      overflow: hidden;
-      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden; position: relative;
     }
-    .portfolio-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
-      z-index: 2;
-    }
+    .portfolio-card:hover { transform: scale(1.03); box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 2; }
 
-    .card-media {
-      width: 100%; height: 100%;
-      position: relative; overflow: hidden;
-    }
-
+    .card-media { width: 100%; height: 100%; position: relative; overflow: hidden; }
     .portfolio-card-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+      position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; display: block;
     }
-
-    .portfolio-card-overlay { display: none; }
+    .portfolio-card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(26,58,46,0.9) 0%, rgba(26,58,46,0.2) 60%, transparent 100%);
+      padding: 2.5rem 1.75rem 1.75rem;
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .portfolio-card:hover .portfolio-card-overlay { opacity: 1; }
+    .overlay-service {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      color: var(--sand); text-transform: uppercase;
+      display: block; margin-bottom: 0.35rem; opacity: 0.8;
+    }
+    .overlay-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 1.5rem;
+      color: var(--cream); line-height: 1.1; display: block; margin-bottom: 0.2rem;
+    }
+    .overlay-location { font-size: 0.8rem; color: rgba(217,203,179,0.55); display: block; }
 
     .carousel-arrows { display: flex; gap: 0.75rem; margin-top: 2rem; padding-right: 5rem; justify-content: flex-end; }
     .carousel-btn {
-      width: 44px; height: 44px; border: 1.5px solid var(--light-2);
+      width: 44px; height: 44px; border: 1px solid var(--light-2);
       border-radius: 8px; background: var(--white); color: var(--text-dark);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: all 0.3s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .carousel-btn:hover { border-color: var(--green); color: var(--green); }
 
+    /* ===== ÜBER UNS ===== */
+    #ueber-uns { background: var(--green-deep); padding: 8rem 5rem; }
+    .ueber-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .ueber-img-wrap {
+      aspect-ratio: 4/5;
+      background: rgba(45,90,67,0.35);
+      border-radius: 16px;
+      border: 1px solid rgba(217,203,179,0.1);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .ueber-img-wrap::after {
+      content: 'FOTO FOLGT';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.2em;
+      color: rgba(217,203,179,0.28);
+    }
+    .ueber-text { display: flex; flex-direction: column; }
+    .ueber-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: clamp(2.5rem, 4vw, 4rem);
+      color: var(--cream); line-height: 1.05; letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+    }
+    .ueber-text p {
+      font-size: 1rem; color: rgba(217,203,179,0.6);
+      line-height: 1.85; margin-bottom: 1.25rem; max-width: 480px;
+    }
+    .ueber-names {
+      display: flex; gap: 2.5rem; margin-top: 1.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(217,203,179,0.1);
+    }
+    .ueber-person-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 1.1rem; color: var(--cream);
+      display: block; margin-bottom: 0.25rem;
+    }
+    .ueber-person-role {
+      font-size: 0.7rem; color: var(--green-pale);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     /* ===== SERVICES ===== */
-    #services { background: var(--green-deep); padding: 6rem 5rem; }
-
-    .services-header { margin-bottom: 3.5rem; }
-
-    .services-list {
-      list-style: none;
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-
+    #services { background: var(--black); padding: 8rem 5rem; }
+    .services-header { margin-bottom: 4rem; }
+    .services-list { list-style: none; border-top: 1px solid rgba(217,203,179,0.07); }
     .service-item {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr 2rem;
-      align-items: center;
-      gap: 2rem;
-      padding: 2rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      transition: background 0.25s;
-      border-radius: 4px;
+      display: grid; grid-template-columns: 3.5rem 1fr 2rem;
+      align-items: center; gap: 2rem;
+      padding: 2.25rem 1rem;
+      border-bottom: 1px solid rgba(217,203,179,0.07);
+      transition: background 0.35s; border-radius: 4px;
     }
-    .service-item:hover { background: rgba(196,112,74,0.05); }
-
+    .service-item:hover { background: rgba(45,90,67,0.12); }
     .service-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem; letter-spacing: 0.15em;
-      color: var(--green); line-height: 1;
+      font-size: 0.68rem; letter-spacing: 0.15em;
+      color: var(--green-pale); line-height: 1;
     }
-
-    .service-body { display: flex; flex-direction: column; gap: 0.35rem; }
-
+    .service-body { display: flex; flex-direction: column; gap: 0.4rem; }
     .service-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-      color: #fff; letter-spacing: 0.05em;
-      text-transform: uppercase; line-height: 1.05;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      color: var(--cream); letter-spacing: 0.02em; line-height: 1.05;
     }
-
     .service-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.42);
-      line-height: 1.5;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      color: rgba(217,203,179,0.35); line-height: 1.5;
     }
-
     .service-arrow {
-      color: rgba(255,255,255,0.15);
-      font-size: 1.1rem; text-align: right;
-      transition: color 0.25s, transform 0.25s;
-      display: block;
+      color: rgba(255,255,255,0.1); font-size: 1.1rem; text-align: right;
+      transition: color 0.3s, transform 0.3s; display: block;
     }
-    .service-item:hover .service-arrow {
+    .service-item:hover .service-arrow { color: var(--sand); transform: translateX(4px); }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { background: var(--sand-light); padding: 8rem 5rem; }
+    .testimonials-header { margin-bottom: 4rem; }
+    .testimonials-header p { font-size: 1rem; color: var(--gray-dark); margin-top: 1rem; max-width: 440px; line-height: 1.8; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .testimonial-card {
+      background: var(--white); border-radius: 16px; padding: 2.5rem;
+      border: 1px solid rgba(26,58,46,0.06);
+      display: flex; flex-direction: column;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,58,46,0.08); }
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; line-height: 0.7;
+      color: var(--green); opacity: 0.22;
+      margin-bottom: 1.25rem; display: block;
+    }
+    .testimonial-text {
+      font-size: 0.95rem; color: var(--text-dark);
+      line-height: 1.8; flex: 1; margin-bottom: 1.75rem;
+      font-style: italic;
+    }
+    .testimonial-divider { height: 1px; background: rgba(26,58,46,0.07); margin-bottom: 1.25rem; }
+    .testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); display: block; margin-bottom: 0.2rem; }
+    .testimonial-role {
+      font-size: 0.7rem; color: var(--green-pale);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ===== PAKETE ===== */
+    #pakete { background: var(--white); padding: 8rem 5rem; }
+    .pakete-header { margin-bottom: 4rem; }
+    .pakete-header p { font-size: 1rem; color: var(--gray-dark); margin-top: 1rem; max-width: 520px; line-height: 1.8; }
+    .pakete-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch; }
+    .paket-card {
+      background: var(--sand-light);
+      border-radius: 16px; padding: 2.75rem;
+      border: 1px solid rgba(217,203,179,0.65);
+      display: flex; flex-direction: column;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .paket-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(26,58,46,0.1); }
+    .paket-card.featured {
+      background: var(--green-deep);
+      border: 1px solid var(--green-light);
+      box-shadow: 0 0 0 1px rgba(74,124,98,0.4), 0 24px 60px rgba(26,58,46,0.18);
+    }
+    .paket-card.featured:hover { box-shadow: 0 0 0 1px rgba(74,124,98,0.6), 0 32px 70px rgba(26,58,46,0.28); }
+    .paket-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.75rem; display: block;
+    }
+    .paket-card.featured .paket-tag { color: var(--sand); }
+    .paket-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 2.1rem;
+      color: var(--text-dark); margin-bottom: 0.5rem; line-height: 1;
+    }
+    .paket-card.featured .paket-name { color: var(--cream); }
+    .paket-price {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+      color: var(--gray-dark); margin-bottom: 2rem;
+      padding-bottom: 1.75rem; border-bottom: 1px solid rgba(26,58,46,0.1);
+    }
+    .paket-card.featured .paket-price { color: var(--green-pale); border-bottom-color: rgba(143,176,158,0.15); }
+    .paket-features {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 0.85rem; flex: 1; margin-bottom: 2.5rem;
+    }
+    .paket-features li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--text-dark); line-height: 1.5;
+    }
+    .paket-card.featured .paket-features li { color: rgba(245,242,234,0.72); }
+    .feat-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0; margin-top: 0.48rem;
+    }
+    .paket-card.featured .feat-dot { background: var(--sand); }
+    .paket-cta {
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.9rem 1.5rem; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      transition: all 0.35s; letter-spacing: 0.04em;
+      background: transparent; border: 1.5px solid rgba(45,90,67,0.3);
       color: var(--green);
-      transform: translateX(4px);
     }
+    .paket-cta:hover { background: var(--green); color: var(--white); border-color: var(--green); }
+    .paket-card.featured .paket-cta { background: var(--sand); color: var(--green-deep); border-color: var(--sand); }
+    .paket-card.featured .paket-cta:hover { background: var(--cream); border-color: var(--cream); }
 
-    @media (max-width: 768px) {
-      #services { padding: 4rem 1.5rem; }
-      .service-item { grid-template-columns: 2.5rem 1fr; gap: 1.25rem; padding: 1.5rem 0.5rem; }
-      .service-arrow { display: none; }
-      .service-title { font-size: clamp(1.2rem, 5vw, 1.6rem); }
-    }
-
-    /* ===== CONTACT FORM (light) ===== */
-    #pakete { background: var(--white); }
-    .contact-intro { margin-bottom: 3rem; }
-    .contact-intro p { font-size: 1rem; color: var(--gray-dark); max-width: 480px; line-height: 1.65; margin-top: 0.75rem; }
-
-    .contact-form {
-      max-width: 680px;
-      display: flex; flex-direction: column; gap: 1.5rem;
-    }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-    .form-group label {
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
-      color: var(--text-dark);
-    }
-    .form-optional { font-weight: 400; color: var(--gray-light); }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%; padding: 0.85rem 1rem;
-      border: 1.5px solid var(--light-2);
-      border-radius: 10px;
-      font-family: 'Inter', sans-serif; font-size: 0.9rem;
-      color: var(--text-dark); background: var(--light);
-      transition: border-color 0.25s, box-shadow 0.25s;
-      outline: none; resize: vertical;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--gray-light); }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(196,112,74,0.08);
-      background: var(--white);
-    }
-
-    .contact-submit { align-self: flex-start; }
-
-    .form-success {
-      display: none; align-items: center; gap: 0.75rem;
-      background: rgba(196,112,74,0.07); border: 1.5px solid rgba(196,112,74,0.2);
-      border-radius: 10px; padding: 1rem 1.25rem;
-      color: var(--green); font-size: 0.9rem; font-weight: 600;
-      max-width: 680px;
-    }
-    .form-success.visible { display: flex; }
-
-    @media (max-width: 768px) {
-      .form-row { grid-template-columns: 1fr; }
-      .contact-submit { width: 100%; justify-content: center; }
-    }
-
-    /* ===== PROCESS (light) ===== */
-    #process { background: var(--light); }
-    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3.5rem; align-items: stretch; }
+    /* ===== PROCESS ===== */
+    #process { background: var(--light); padding: 8rem 5rem; }
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 4rem; align-items: stretch; }
     .process-card {
-      background: var(--white); border-radius: 12px; padding: 2rem;
+      background: var(--white); border-radius: 14px; padding: 2.25rem;
       border: 1px solid var(--light-2);
-      transition: transform 0.3s, box-shadow 0.3s;
-      height: 100%;
+      transition: transform 0.4s, box-shadow 0.4s; height: 100%;
     }
-    .process-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.07); }
+    .process-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(26,58,46,0.07); }
     .process-num {
-      font-family: 'DM Sans', sans-serif; font-size: 3rem;
-      color: rgba(196,112,74,0.15); line-height: 1; margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600;
+      color: rgba(45,90,67,0.12); line-height: 1; margin-bottom: 1.25rem;
     }
-    .process-icon {
-      width: 40px; height: 40px; background: rgba(196,112,74,0.08);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem; color: var(--green);
+    .step-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: 1.5rem; letter-spacing: 0.02em; color: var(--text-dark); margin-bottom: 0.65rem;
     }
-    .step-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.5rem; letter-spacing: 0.02em; color: var(--text-dark); margin-bottom: 0.5rem; }
-    .step-desc { font-size: 0.88rem; color: var(--gray-dark); line-height: 1.65; }
+    .step-desc { font-size: 0.88rem; color: var(--gray-dark); line-height: 1.75; }
 
-    /* ===== BOOKING CTA (dark) ===== */
+    /* ===== BOOKING CTA ===== */
     #booking {
       background: var(--green-deep);
       display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 8rem 5rem;
+      text-align: center; padding: 10rem 5rem;
     }
     .booking-headline {
       font-family: 'Cormorant Garamond', serif; font-weight: 600;
-      font-size: clamp(3rem, 6.5vw, 6.5rem); line-height: 0.95;
-      letter-spacing: 0.02em; margin-bottom: 1.25rem; color: var(--cream);
+      font-size: clamp(3rem, 6vw, 6rem); line-height: 0.95;
+      letter-spacing: 0.02em; margin-bottom: 1.5rem; color: var(--cream);
     }
-    .booking-headline span { color: var(--green-light); }
+    .booking-headline span { color: var(--sand); }
     .booking-sub {
-      font-size: 1rem; color: rgba(245,242,234,0.6);
-      max-width: 420px; line-height: 1.65; margin-bottom: 2.5rem;
+      font-size: 1rem; color: rgba(217,203,179,0.5);
+      max-width: 420px; line-height: 1.8; margin-bottom: 3rem;
     }
-    .booking-cta { font-size: 1.05rem; padding: 1.1rem 2.5rem; }
+    .booking-cta { font-size: 0.95rem; padding: 1.1rem 2.75rem; }
 
-    /* ===== FOOTER (dark) ===== */
-    footer { background: var(--dark); padding: 5rem 5rem 2rem; position: relative; }
+    /* ===== FOOTER ===== */
+    footer { background: var(--black); padding: 6rem 5rem 2.5rem; position: relative; }
     footer::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(to right, transparent, rgba(196,112,74,0.5), transparent);
+      background: linear-gradient(to right, transparent, rgba(217,203,179,0.28), transparent);
     }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .footer-logo { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; height: 36px; }
+    .footer-logo { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem; height: 36px; }
     .footer-logo img { height: 36px; width: auto; }
-    .footer-logo-text { font-family: 'DM Sans', sans-serif; font-size: 1.3rem; letter-spacing: 0.2em; color: var(--white); }
-    .footer-desc { font-size: 0.88rem; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 270px; }
-    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .footer-links a, .social-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
-    .footer-links a:hover, .social-links a:hover { color: var(--green-light); }
+    .footer-logo-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+      font-weight: 500; letter-spacing: 0.2em; color: var(--cream);
+    }
+    .footer-desc { font-size: 0.88rem; color: rgba(217,203,179,0.32); line-height: 1.8; max-width: 260px; }
+    .footer-col-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(217,203,179,0.45); margin-bottom: 1.5rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a, .social-links a {
+      color: rgba(217,203,179,0.32); text-decoration: none;
+      font-size: 0.88rem; transition: color 0.3s;
+    }
+    .footer-links a:hover, .social-links a:hover { color: var(--sand); }
     .social-links { display: flex; flex-direction: column; gap: 0.7rem; }
     .social-links a { display: flex; align-items: center; gap: 0.5rem; }
-    .footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
-    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--green-light); }
+    .footer-bottom {
+      padding-top: 2rem; border-top: 1px solid rgba(217,203,179,0.07);
+      text-align: center; font-size: 0.78rem; color: rgba(217,203,179,0.22);
+    }
+    .footer-bottom a { color: rgba(217,203,179,0.22); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--sand); }
 
-    /* ===== DATENSCHUTZ MODAL ===== */
+    /* ===== MODALS ===== */
     #datenschutz-modal,
     #impressum-modal {
       position: fixed; inset: 0; z-index: 2000;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.82);
       opacity: 0; pointer-events: none;
       transition: opacity 0.3s ease;
     }
@@ -524,110 +577,103 @@
     #impressum-modal.active { opacity: 1; pointer-events: auto; }
     .datenschutz-box {
       background: var(--black);
-      border: 1px solid rgba(196,112,74,0.2);
-      border-radius: 16px;
-      width: min(860px, 92vw);
-      max-height: 85vh;
-      min-height: 0;
-      overflow-y: scroll;
-      position: relative;
+      border: 1px solid rgba(217,203,179,0.12);
+      border-radius: 16px; width: min(860px, 92vw);
+      max-height: 85vh; min-height: 0;
+      overflow-y: scroll; position: relative;
       padding: 2.5rem 3rem;
       scrollbar-width: thin;
-      scrollbar-color: rgba(196,112,74,0.4) transparent;
+      scrollbar-color: rgba(217,203,179,0.28) transparent;
     }
     .datenschutz-box::-webkit-scrollbar { width: 5px; }
-    .datenschutz-box::-webkit-scrollbar-thumb { background: rgba(196,112,74,0.4); border-radius: 10px; }
+    .datenschutz-box::-webkit-scrollbar-thumb { background: rgba(217,203,179,0.28); border-radius: 10px; }
     .datenschutz-close {
       position: sticky; top: 0; float: right;
       width: 36px; height: 36px; border-radius: 8px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.7); font-size: 1.3rem; line-height: 1; cursor: pointer;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6); font-size: 1.3rem; line-height: 1; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s, color 0.2s;
       margin-left: auto; margin-bottom: 1.5rem; flex-shrink: 0;
     }
-    .datenschutz-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .datenschutz-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
     .datenschutz-content h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 2.2rem; letter-spacing: 0.02em;
-      color: #fff; margin-bottom: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 2rem; color: var(--cream); margin-bottom: 1.5rem;
     }
     .datenschutz-content h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 1.4rem; letter-spacing: 0.02em;
-      color: #fff; margin: 2rem 0 0.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 1.35rem; color: var(--cream); margin: 2rem 0 0.6rem;
     }
     .datenschutz-content h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: 1.1rem;
-      color: rgba(255,255,255,0.85); margin: 1.2rem 0 0.4rem;
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem;
+      color: rgba(245,242,234,0.8); margin: 1.2rem 0 0.4rem;
     }
     .datenschutz-content p {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; color: rgba(255,255,255,0.7);
-      line-height: 1.75; margin-bottom: 0.7rem;
+      font-size: 0.88rem; color: rgba(217,203,179,0.58); line-height: 1.75; margin-bottom: 0.7rem;
     }
     .datenschutz-content ul { margin: 0.4rem 0 0.7rem 1.2rem; }
     .datenschutz-content li {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; color: rgba(255,255,255,0.7);
-      line-height: 1.65; margin-bottom: 0.35rem;
+      font-size: 0.88rem; color: rgba(217,203,179,0.58); line-height: 1.65; margin-bottom: 0.35rem;
     }
-    .datenschutz-content a { color: #D4845E; text-decoration: none; }
+    .datenschutz-content a { color: var(--sand); text-decoration: none; }
     .datenschutz-content a:hover { text-decoration: underline; }
-    .datenschutz-content strong { color: rgba(255,255,255,0.85); }
+    .datenschutz-content strong { color: rgba(245,242,234,0.85); }
     .datenschutz-content .index { list-style: none; margin-left: 0; }
     .datenschutz-content .index li { margin-bottom: 0.25rem; }
-    @media (max-width: 768px) {
-      .datenschutz-box { padding: 1.75rem 1.5rem; }
-    }
 
     /* ===== RESPONSIVE ===== */
-
-    /* Large screens: give portfolio more breathing room */
     @media (min-width: 1600px) {
-      #portfolio { padding: 7rem 0 7rem 6rem; }
+      #portfolio { padding: 9rem 0 9rem 6rem; }
       .portfolio-carousel { gap: 2rem; padding-right: 6rem; }
     }
-
-    /* Short screens: scale down so everything fits in 100vh */
     @media (max-height: 700px) {
-      .hero-headline { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.2rem; }
-      .hero-location { margin-bottom: 1rem; }
-      .hero-subtext { font-size: 0.9rem; margin-bottom: 1rem; }
-      .hero-bullets { gap: 0.4rem; margin-bottom: 1.2rem; }
+      .hero-headline { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+      .hero-location { margin-bottom: 1.25rem; }
+      .hero-subtext { font-size: 0.9rem; margin-bottom: 1.25rem; }
+      .hero-bullets { gap: 0.5rem; margin-bottom: 1.5rem; }
     }
-
+    @media (max-width: 1200px) {
+      .ueber-grid { gap: 3.5rem; }
+    }
     @media (max-width: 1024px) {
       .process-grid { grid-template-columns: repeat(2,1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2,1fr); }
+      .pakete-grid { grid-template-columns: 1fr 1fr; }
+      .ueber-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .ueber-img-wrap { aspect-ratio: 16/9; }
     }
     @media (max-width: 768px) {
       nav { grid-template-columns: 1fr auto; padding: 1rem 1.5rem; }
       .nav-links, .nav-right { display: none; }
       .hamburger { display: flex; }
-      section { padding: 4rem 1.5rem; }
+      section { padding: 5rem 1.5rem; }
       #hero { padding: 0 1.5rem; }
-      .hero-headline { font-size: clamp(2.2rem, 8vw, 3.2rem); margin-bottom: 1.4rem; }
-      .hero-location { margin-bottom: 1.05rem; }
-      .hero-subtext { font-size: 0.95rem; margin-bottom: 1.05rem; }
-      .hero-bullets { gap: 0.42rem; margin-bottom: 1.4rem; }
+      #booking { padding: 6rem 1.5rem; }
+      .hero-headline { font-size: clamp(2.2rem, 9vw, 3.2rem); margin-bottom: 1.75rem; }
+      .hero-location { margin-bottom: 1.25rem; }
+      .hero-subtext { font-size: 0.95rem; margin-bottom: 1.25rem; }
+      .hero-bullets { gap: 0.5rem; margin-bottom: 1.75rem; }
       .hero-cta-row { flex-direction: column; gap: 0.75rem; }
       .hero-cta-row .btn-primary,
       .hero-cta-row .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
-      .stats-bar { display: none; }
-      .stat-item { padding: 1.5rem 0; width: 100%; }
-      .stat-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--light-2); }
-      #portfolio { padding: 4rem 0 4rem 1.5rem; }
+      #portfolio { padding: 5rem 0 5rem 1.5rem; }
       .portfolio-header { padding-right: 1.5rem; }
       .portfolio-card { flex: 0 0 clamp(220px, 65vw, 300px); width: clamp(220px, 65vw, 300px); height: clamp(300px, 88vw, 420px); }
-      .card-media { width: 100%; height: 100%; }
       .carousel-arrows { padding-right: 1.5rem; }
       .process-grid { grid-template-columns: 1fr; }
-      #booking { padding: 5rem 1.5rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .pakete-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      footer { padding: 4rem 1.5rem 2rem; }
+      footer { padding: 5rem 1.5rem 2rem; }
       .scroll-indicator { display: none; }
-      /* prevent iOS Safari from zooming into form inputs */
+      .datenschutz-box { padding: 1.75rem 1.5rem; }
+      #services { padding: 5rem 1.5rem; }
+      #ueber-uns { padding: 5rem 1.5rem; }
+      #testimonials { padding: 5rem 1.5rem; }
+      .service-item { grid-template-columns: 2.5rem 1fr; gap: 1.25rem; padding: 1.5rem 0.5rem; }
+      .service-arrow { display: none; }
+      .service-title { font-size: clamp(1.2rem, 5vw, 1.6rem); }
       .form-group input, .form-group textarea { font-size: 16px; }
     }
   </style>
@@ -637,16 +683,16 @@
 <div class="mobile-overlay" id="mobileOverlay">
   <a href="#services" onclick="closeMobile()">Services</a>
   <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#pakete" onclick="closeMobile()">Anfrage</a>
+  <a href="#pakete" onclick="closeMobile()">Pakete</a>
   <a href="#booking" onclick="closeMobile()">Kontakt</a>
 </div>
 
-<!-- NAV: Links | Logo | CTA-Rechts -->
+<!-- NAV -->
 <nav id="navbar">
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#pakete">Anfrage</a></li>
+    <li><a href="#pakete">Pakete</a></li>
     <li><a href="#booking">Kontakt</a></li>
   </ul>
   <a href="#hero" class="nav-logo">
@@ -675,33 +721,33 @@
   <div class="hero-inner">
     <div class="hero-content" id="heroContent">
       <div class="hero-location">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        Content-Agentur · Social Media · Video
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Cinematische Immobilienvermarktung
       </div>
       <h1 class="hero-headline">
-        <span class="line-1">LISTINGS DIE</span>
-        <span class="line-2">SICH SELBST</span>
-        <span class="line-3"><span class="accent">VERKAUFEN.</span></span>
+        <span class="line-1">Außergewöhnliche Objekte</span>
+        <span class="line-2 accent">verdienen</span>
+        <span class="line-3 accent">außergewöhnliche Inszenierung.</span>
       </h1>
-      <p class="hero-subtext">Während andere Makler noch Fotos posten, gewinnen unsere Kunden Anfragen durch cinematische Videos – die auf Social Media für sich arbeiten. Rund um die Uhr.</p>
+      <p class="hero-subtext">Wir produzieren cinematische Vermarktung für Makler und Bauträger, die sich von der Masse abheben wollen. Vom ersten Frame bis zur fertigen Kampagne.</p>
       <ul class="hero-bullets">
         <li>
           <span class="bullet-icon">
-            <svg width="10" height="12" viewBox="0 0 11 13" fill="currentColor"><path d="M0 0.5v12l11-6L0 0.5z"/></svg>
+            <svg width="9" height="10" viewBox="0 0 11 13" fill="currentColor"><path d="M0 0.5v12l11-6L0 0.5z"/></svg>
           </span>
-          Mehr Anfragen durch Scroll-stopping Reels
+          Cinematische Objektfilme in 4K
         </li>
         <li>
           <span class="bullet-icon">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </span>
-          Deine Personal Brand die Vertrauen aufbaut
+          Strategische Social-Media-Vermarktung
         </li>
         <li>
           <span class="bullet-icon">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
           </span>
-          Fertig in 48h – ready to post
+          Persönliche Markenpositionierung
         </li>
       </ul>
       <div class="hero-cta-row">
@@ -716,20 +762,7 @@
   </div>
 </section>
 
-<!-- STATS BAR (light) -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-number">Cinematische Listings</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">Personal Branding</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">Conversion-First Mindset</span>
-  </div>
-</div>
-
-<!-- PORTFOLIO (light bg) -->
+<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="portfolio-header">
     <span class="section-tag">Referenzen</span>
@@ -739,10 +772,14 @@
   <div class="portfolio-carousel" id="portfolioCarousel">
     <div class="portfolio-card">
       <div class="card-media">
-        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="10"
-               data-src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4">
+        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="10">
           <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
         </video>
+        <div class="portfolio-card-overlay">
+          <span class="overlay-service">Cinematic Listing Video</span>
+          <span class="overlay-title">Villa am Stadtrand</span>
+          <span class="overlay-location">Frankfurt · 4K Produktion</span>
+        </div>
       </div>
     </div>
     <div class="portfolio-card">
@@ -750,6 +787,11 @@
         <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
           <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1778008002/3D_Geb%C3%A4udereinigung_sq0ruh.mp4" type="video/mp4">
         </video>
+        <div class="portfolio-card-overlay">
+          <span class="overlay-service">3D Visualisierung</span>
+          <span class="overlay-title">Gewerbeimmobilie</span>
+          <span class="overlay-location">Darmstadt · Social Reels</span>
+        </div>
       </div>
     </div>
     <div class="portfolio-card">
@@ -757,6 +799,11 @@
         <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
           <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
         </video>
+        <div class="portfolio-card-overlay">
+          <span class="overlay-service">Drohnenaufnahmen</span>
+          <span class="overlay-title">Penthouse Suite</span>
+          <span class="overlay-location">Mannheim · Aerial 4K</span>
+        </div>
       </div>
     </div>
     <div class="portfolio-card">
@@ -764,6 +811,11 @@
         <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
           <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
         </video>
+        <div class="portfolio-card-overlay">
+          <span class="overlay-service">Personal Brand Video</span>
+          <span class="overlay-title">Neubauprojekt</span>
+          <span class="overlay-location">Heidelberg · Kampagne</span>
+        </div>
       </div>
     </div>
   </div>
@@ -777,110 +829,181 @@
   </div>
 </section>
 
+<!-- ÜBER UNS -->
+<section id="ueber-uns">
+  <div class="ueber-grid">
+    <div class="ueber-img-wrap"></div>
+    <div class="ueber-text">
+      <span class="section-tag light">Das Team</span>
+      <h2 class="ueber-headline">ZWEI KÖPFE.<br>EINE VISION.</h2>
+      <p>Wir sind Pascal und Arian – zwei Kreative mit einer Leidenschaft für außergewöhnliche Immobilien und die Geschichten dahinter. Tribe Studio haben wir gegründet, weil wir glauben: Hochwertige Objekte verdienen hochwertige Inszenierung.</p>
+      <p>Von der ersten Location-Begehung bis zum finalen Cut – wir denken strategisch, produzieren cinematisch und liefern Content, der wirklich verkauft.</p>
+      <div class="ueber-names">
+        <div>
+          <span class="ueber-person-name">Pascal Brunner</span>
+          <span class="ueber-person-role">Produktion & Strategie</span>
+        </div>
+        <div>
+          <span class="ueber-person-name">Arian Shahidi</span>
+          <span class="ueber-person-role">Kreation & Post-Production</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="services-header">
     <span class="section-tag light">Was wir machen</span>
-    <h2 class="section-headline white">UNSERE LEISTUNGEN.</h2>
+    <h2 class="section-headline cream">UNSERE LEISTUNGEN.</h2>
   </div>
   <ul class="services-list">
     <li class="service-item">
       <span class="service-num">01</span>
-      <div class="service-body"><span class="service-title">Cinematic Video Produktion</span><span class="service-desc">4K Listing-Videos die Anfragen generieren</span></div>
+      <div class="service-body"><span class="service-title">Cinematic Video Produktion</span><span class="service-desc">4K Listing-Videos, die Anfragen generieren – von der Location bis zum Cut</span></div>
       <span class="service-arrow">→</span>
     </li>
     <li class="service-item">
       <span class="service-num">02</span>
-      <div class="service-body"><span class="service-title">Social Media Reels</span><span class="service-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok</span></div>
+      <div class="service-body"><span class="service-title">Social Media Reels</span><span class="service-desc">Hook-optimierte Kurzvideos für Instagram &amp; TikTok – scroll-stopping Content</span></div>
       <span class="service-arrow">→</span>
     </li>
     <li class="service-item">
       <span class="service-num">03</span>
-      <div class="service-body"><span class="service-title">Personal Brand Videos</span><span class="service-desc">Werde der Makler den alle kennen</span></div>
+      <div class="service-body"><span class="service-title">Personal Brand Videos</span><span class="service-desc">Positioniere dich als Experte – werde der Makler, dem alle vertrauen</span></div>
       <span class="service-arrow">→</span>
     </li>
     <li class="service-item">
       <span class="service-num">04</span>
-      <div class="service-body"><span class="service-title">Drohnenaufnahmen</span><span class="service-desc">Luftaufnahmen die das Objekt in Szene setzen</span></div>
+      <div class="service-body"><span class="service-title">Drohnenaufnahmen</span><span class="service-desc">Luftaufnahmen in 4K, die Lage und Objekt spektakulär in Szene setzen</span></div>
       <span class="service-arrow">→</span>
     </li>
     <li class="service-item">
       <span class="service-num">05</span>
-      <div class="service-body"><span class="service-title">Immobilien Landingpage</span><span class="service-desc">Scroll-Animationen, Kontaktformular, fertig in 48h</span></div>
+      <div class="service-body"><span class="service-title">Immobilien Landingpage</span><span class="service-desc">Individuelle Objektseiten mit Animationen und Kontaktformular – fertig in 48h</span></div>
       <span class="service-arrow">→</span>
     </li>
   </ul>
 </section>
 
-
-<!-- ANFRAGE -->
-<section id="pakete">
-  <div class="contact-intro">
-    <span class="section-tag">Anfrage</span>
-    <h2 class="section-headline dark">INTERESSE? SCHREIB UNS.</h2>
-    <p>Beschreib uns kurz dein Projekt – wir melden uns innerhalb von 24 Stunden bei dir.</p>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <span class="section-tag muted">Kundenstimmen</span>
+    <h2 class="section-headline dark">WAS UNSERE KUNDEN SAGEN.</h2>
+    <p>Ehrliche Worte von Maklern und Bauträgern, die mit uns gearbeitet haben.</p>
   </div>
-  <form class="contact-form" id="contactForm" novalidate>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" placeholder="Dein Name" required>
-      </div>
-      <div class="form-group">
-        <label for="cf-email">E-Mail</label>
-        <input type="email" id="cf-email" name="email" placeholder="deine@email.de" required>
-      </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <span class="testimonial-quote">"</span>
+      <p class="testimonial-text">Tribe Studio hat unser Listing komplett transformiert. Das Video hatte innerhalb einer Woche mehr Reichweite als alle bisherigen Posts zusammen. Absolute Empfehlung.</p>
+      <div class="testimonial-divider"></div>
+      <span class="testimonial-name">Max Mustermann</span>
+      <span class="testimonial-role">Immobilienmakler · Frankfurt</span>
     </div>
-    <div class="form-group">
-      <label for="cf-phone">Telefon <span class="form-optional">(optional)</span></label>
-      <input type="tel" id="cf-phone" name="phone" placeholder="+49 ...">
+    <div class="testimonial-card">
+      <span class="testimonial-quote">"</span>
+      <p class="testimonial-text">Die Zusammenarbeit war professionell, schnell und das Ergebnis hat unsere Erwartungen übertroffen. Endlich ein Team, das Immobilien wirklich versteht.</p>
+      <div class="testimonial-divider"></div>
+      <span class="testimonial-name">Anna Schmidt</span>
+      <span class="testimonial-role">Projektentwicklerin · Mannheim</span>
     </div>
-    <div class="form-group">
-      <label for="cf-msg">Deine Anfrage</label>
-      <textarea id="cf-msg" name="message" rows="5" placeholder="Was interessiert dich? Welches Objekt, welche Leistung?" required></textarea>
+    <div class="testimonial-card">
+      <span class="testimonial-quote">"</span>
+      <p class="testimonial-text">Seit wir mit Tribe Studio arbeiten, haben sich unsere Anfragen verdoppelt. Käufer kommen schon emotional vorbereitet – das macht den entscheidenden Unterschied.</p>
+      <div class="testimonial-divider"></div>
+      <span class="testimonial-name">Thomas Weber</span>
+      <span class="testimonial-role">Bauträger · Heidelberg</span>
     </div>
-    <button type="submit" class="btn-primary contact-submit">Anfrage senden →</button>
-  </form>
-  <div class="form-success" id="formSuccess">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    E-Mail geöffnet – schick sie ab und wir melden uns bald bei dir!
   </div>
 </section>
 
-<!-- PROCESS (light) -->
+<!-- PAKETE -->
+<section id="pakete">
+  <div class="pakete-header">
+    <span class="section-tag">Leistungen</span>
+    <h2 class="section-headline dark">UNSERE PAKETE.</h2>
+    <p>Maßgeschneiderte Lösungen für jeden Bedarf – von der einzelnen Produktion bis zur vollständigen Vermarktungskampagne. Alle Preise auf Anfrage.</p>
+  </div>
+  <div class="pakete-grid">
+    <div class="paket-card">
+      <span class="paket-tag">Einstieg</span>
+      <h3 class="paket-name">STARTER</h3>
+      <p class="paket-price">Auf Anfrage · Einzelproduktion</p>
+      <ul class="paket-features">
+        <li><span class="feat-dot"></span>Cinematic Objektfilm (60–90 Sek.)</li>
+        <li><span class="feat-dot"></span>2 Social-Media-Reels</li>
+        <li><span class="feat-dot"></span>Drohnenaufnahmen</li>
+        <li><span class="feat-dot"></span>1 Korrekturschleife inklusive</li>
+        <li><span class="feat-dot"></span>Fertig in 5 Werktagen</li>
+      </ul>
+      <a href="mailto:support@tribestudio.de?subject=Anfrage%20Starter-Paket" class="paket-cta">Anfrage stellen →</a>
+    </div>
+    <div class="paket-card featured">
+      <span class="paket-tag">Empfohlen</span>
+      <h3 class="paket-name">PRO</h3>
+      <p class="paket-price">Auf Anfrage · Komplettpaket</p>
+      <ul class="paket-features">
+        <li><span class="feat-dot"></span>Alles aus STARTER</li>
+        <li><span class="feat-dot"></span>Personal Brand Video</li>
+        <li><span class="feat-dot"></span>5 optimierte Social Reels</li>
+        <li><span class="feat-dot"></span>Individuelle Landingpage</li>
+        <li><span class="feat-dot"></span>Content-Strategie & Posting-Plan</li>
+        <li><span class="feat-dot"></span>Unbegrenzte Korrekturen</li>
+      </ul>
+      <a href="mailto:support@tribestudio.de?subject=Anfrage%20Pro-Paket" class="paket-cta">Anfrage stellen →</a>
+    </div>
+    <div class="paket-card">
+      <span class="paket-tag">Maßgeschneidert</span>
+      <h3 class="paket-name">INDIVIDUELL</h3>
+      <p class="paket-price">Auf Anfrage · Custom</p>
+      <ul class="paket-features">
+        <li><span class="feat-dot"></span>Vollständige Kampagnenplanung</li>
+        <li><span class="feat-dot"></span>Laufende Betreuung (monatlich)</li>
+        <li><span class="feat-dot"></span>Mehrere Objekte & Formate</li>
+        <li><span class="feat-dot"></span>Exklusiv-Partnerschaft möglich</li>
+        <li><span class="feat-dot"></span>Direkter Ansprechpartner</li>
+      </ul>
+      <a href="mailto:support@tribestudio.de?subject=Individuelle%20Anfrage" class="paket-cta">Anfrage stellen →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
 <section id="process">
   <span class="section-tag">Wie wir arbeiten</span>
   <h2 class="section-headline dark">DER PROZESS.</h2>
   <div class="process-grid">
     <div class="process-card">
       <div class="process-num">01</div>
-      <h3 class="step-title">DISCOVERY CALL</h3>
-      <p class="step-desc">Wir lernen euch kennen. Ziele, Zielgruppe, Tonalität und bisherige Aktivitäten werden analysiert. 30 Minuten, kostenlos.</p>
+      <h3 class="step-title">Discovery Call</h3>
+      <p class="step-desc">Wir lernen euch und euer Objekt kennen. Ziele, Zielgruppe, Tonalität – 30 Minuten, kostenlos und unverbindlich.</p>
     </div>
     <div class="process-card">
       <div class="process-num">02</div>
-      <h3 class="step-title">STRATEGIE & KONZEPT</h3>
-      <p class="step-desc">Basierend auf euren Zielen erstellen wir eine maßgeschneiderte Content-Strategie und Redaktionsplanung.</p>
+      <h3 class="step-title">Konzept & Strategie</h3>
+      <p class="step-desc">Maßgeschneiderte Content-Strategie basierend auf euren Zielen – inklusive Drehbuch, Moodboard und Postingplan.</p>
     </div>
     <div class="process-card">
       <div class="process-num">03</div>
-      <h3 class="step-title">PRODUKTION</h3>
-      <p class="step-desc">Unser Team produziert, bearbeitet und optimiert alle Content-Formate. Ihr erhaltet alles zur Freigabe vor Veröffentlichung.</p>
+      <h3 class="step-title">Produktion</h3>
+      <p class="step-desc">Shooting, Drohne, Cut, Color Grading – ihr erhaltet alles fertig und schnittreif zur Freigabe.</p>
     </div>
     <div class="process-card">
       <div class="process-num">04</div>
-      <h3 class="step-title">ANALYSE & SKALIERUNG</h3>
-      <p class="step-desc">Was funktioniert, wird skaliert. Monatlich analysieren wir Performance-Daten und passen die Strategie an.</p>
+      <h3 class="step-title">Veröffentlichung</h3>
+      <p class="step-desc">Ready to post – wir übergeben alle Formate und unterstützen bei der Veröffentlichung. Performance-Analyse auf Wunsch.</p>
     </div>
   </div>
 </section>
 
-<!-- BOOKING CTA (dark) -->
+<!-- BOOKING CTA -->
 <section id="booking">
   <span class="section-tag light">Bereit?</span>
   <h2 class="booking-headline">LASS UNS<br /><span>LOSLEGEN.</span></h2>
-  <p class="booking-sub">Beschreib uns kurz dein Projekt – wir melden uns innerhalb von 24 Stunden.</p>
-  <a href="#pakete" class="btn-primary booking-cta">Angebot holen →</a>
+  <p class="booking-sub">Beschreib uns kurz dein Objekt oder Projekt – wir melden uns innerhalb von 24 Stunden.</p>
+  <a href="mailto:support@tribestudio.de?subject=Anfrage%20Tribe%20Studio" class="btn-primary booking-cta">Jetzt anfragen →</a>
 </section>
 
 <!-- FOOTER -->
@@ -891,14 +1014,14 @@
         <img src="logo-ts.png" alt="Tribe Studio" style="height:38px; width:auto;">
         <span class="footer-logo-text">TRIBE STUDIO</span>
       </div>
-      <p class="footer-desc">Content-Agentur für Marken, die wachsen wollen. Wir machen Content, der verkauft.</p>
+      <p class="footer-desc">Cinematische Immobilienvermarktung für Makler und Bauträger, die außergewöhnlich sein wollen.</p>
     </div>
     <div>
       <p class="footer-col-title">Navigation</p>
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#pakete">Anfrage</a></li>
+        <li><a href="#pakete">Pakete</a></li>
         <li><a href="#process">Prozess</a></li>
       </ul>
     </div>
@@ -906,14 +1029,15 @@
       <p class="footer-col-title">Kontakt</p>
       <ul class="footer-links">
         <li><a href="mailto:support@tribestudio.de">support@tribestudio.de</a></li>
+        <li><a href="tel:+4917645688302">+49 176 45688302</a></li>
         <li><a href="#pakete">Angebot holen</a></li>
       </ul>
     </div>
     <div>
       <p class="footer-col-title">Social</p>
       <div class="social-links">
-        <a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener" class="social-instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           Instagram
         </a>
       </div>
@@ -930,26 +1054,20 @@
     <button class="datenschutz-close" onclick="closeImpressum()" aria-label="Schließen">×</button>
     <div class="datenschutz-content">
       <h1>Impressum</h1>
-
       <p>GbR Pascal Brunner und Arian Shahidi<br>
       Am alten E-Werk 5a<br>
       64625 Bensheim</p>
-
       <p><strong>Vertreten durch:</strong><br>
       Pascal Brunner<br>
       Arian Shahidi</p>
-
       <h2>Kontakt</h2>
       <p>Telefon: <a href="tel:+4917645688302">+49 176 45688302</a><br>
       E-Mail: <a href="mailto:support@tribestudio.de">support@tribestudio.de</a></p>
-
       <h2>Umsatzsteuer-ID</h2>
       <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
       DE457187950</p>
-
       <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
       <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-
       <p>Quelle: <a href="https://www.e-recht24.de/impressum-generator.html" target="_blank" rel="noopener">https://www.e-recht24.de/impressum-generator.html</a></p>
     </div>
   </div>
@@ -1011,18 +1129,17 @@
 
       <h2 id="dp-sicherheit">Sicherheitsmaßnahmen</h2>
       <p>Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der Technik geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.</p>
-      <p>Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit, Integrität und Verfügbarkeit von Daten durch Kontrolle des physischen und elektronischen Zugangs zu den Daten. Ferner berücksichtigen wir den Schutz personenbezogener Daten bereits bei der Entwicklung bzw. Auswahl von Hardware, Software sowie Verfahren entsprechend dem Prinzip des Datenschutzes durch Technikgestaltung und datenschutzfreundliche Voreinstellungen.</p>
-      <p><strong>TLS-/SSL-Verschlüsselung (HTTPS):</strong> Unsere Website nutzt zur Sicherung der Datenübertragung eine TLS-/SSL-Verschlüsselung. Dies wird durch die Anzeige von HTTPS in der URL signalisiert.</p>
+      <p>Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit, Integrität und Verfügbarkeit von Daten durch Kontrolle des physischen und elektronischen Zugangs zu den Daten.</p>
+      <p><strong>TLS-/SSL-Verschlüsselung (HTTPS):</strong> Unsere Website nutzt zur Sicherung der Datenübertragung eine TLS-/SSL-Verschlüsselung.</p>
 
       <h2 id="dp-uebermittlung">Übermittlung von personenbezogenen Daten</h2>
-      <p>Im Rahmen unserer Verarbeitung von personenbezogenen Daten kommt es vor, dass diese an andere Stellen übermittelt werden. Zu den Empfängern können z.&nbsp;B. mit IT-Aufgaben beauftragte Dienstleister gehören oder Anbieter von Diensten und Inhalten, die in eine Website eingebunden sind. In solchen Fällen beachten wir die gesetzlichen Vorgaben und schließen entsprechende Verträge zum Schutz Ihrer Daten ab.</p>
+      <p>Im Rahmen unserer Verarbeitung von personenbezogenen Daten kommt es vor, dass diese an andere Stellen übermittelt werden. Zu den Empfängern können z.&nbsp;B. mit IT-Aufgaben beauftragte Dienstleister gehören oder Anbieter von Diensten und Inhalten, die in eine Website eingebunden sind.</p>
 
       <h2 id="dp-international">Internationale Datentransfers</h2>
-      <p>Sofern wir Daten in ein Drittland (außerhalb der EU/EWR) übermitteln, erfolgt dies stets im Einklang mit den gesetzlichen Vorgaben. Für Datenübermittlungen in die USA stützen wir uns vorrangig auf das Data Privacy Framework (DPF), welches durch einen Angemessenheitsbeschluss der EU-Kommission vom 10.07.2023 als sicherer Rechtsrahmen anerkannt wurde. Zusätzlich haben wir mit den jeweiligen Anbietern Standardvertragsklauseln abgeschlossen.</p>
+      <p>Sofern wir Daten in ein Drittland (außerhalb der EU/EWR) übermitteln, erfolgt dies stets im Einklang mit den gesetzlichen Vorgaben. Für Datenübermittlungen in die USA stützen wir uns vorrangig auf das Data Privacy Framework (DPF).</p>
 
       <h2 id="dp-speicherung">Allgemeine Informationen zur Datenspeicherung und Löschung</h2>
       <p>Wir löschen personenbezogene Daten, die wir verarbeiten, gemäß den gesetzlichen Bestimmungen, sobald die zugrundeliegenden Einwilligungen widerrufen werden oder keine weiteren rechtlichen Grundlagen für die Verarbeitung bestehen.</p>
-      <p>Daten, die aus handels- oder steuerrechtlichen Gründen aufbewahrt werden müssen, werden entsprechend archiviert. Bei mehreren Angaben zur Aufbewahrungsdauer ist stets die längste Frist maßgeblich.</p>
 
       <h2 id="dp-rechte">Rechte der betroffenen Personen</h2>
       <p>Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu (Art. 15–21 DSGVO):</p>
@@ -1037,18 +1154,17 @@
       </ul>
 
       <h2 id="dp-hosting">Bereitstellung des Onlineangebots und Webhosting</h2>
-      <p>Wir verarbeiten die Daten der Nutzer, um ihnen unsere Online-Dienste zur Verfügung stellen zu können. Zu diesem Zweck verarbeiten wir die IP-Adresse des Nutzers, die notwendig ist, um die Inhalte und Funktionen unserer Online-Dienste an den Browser oder das Endgerät der Nutzer zu übermitteln.</p>
+      <p>Wir verarbeiten die Daten der Nutzer, um ihnen unsere Online-Dienste zur Verfügung stellen zu können.</p>
       <ul>
         <li><strong>Verarbeitete Datenarten:</strong> Nutzungsdaten; Meta-, Kommunikations- und Verfahrensdaten; Protokolldaten.</li>
         <li><strong>Betroffene Personen:</strong> Nutzer.</li>
         <li><strong>Zwecke der Verarbeitung:</strong> Bereitstellung unseres Onlineangebotes; Sicherheitsmaßnahmen.</li>
         <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
       </ul>
-      <p><strong>Erhebung von Zugriffsdaten und Logfiles:</strong> Der Zugriff auf unser Onlineangebot wird in Form von Server-Logfiles protokolliert. Logfile-Informationen werden für die Dauer von maximal 30 Tagen gespeichert und danach gelöscht oder anonymisiert.</p>
+      <p><strong>Erhebung von Zugriffsdaten und Logfiles:</strong> Logfile-Informationen werden für die Dauer von maximal 30 Tagen gespeichert und danach gelöscht oder anonymisiert.</p>
 
       <h2 id="dp-cookies">Einsatz von Cookies</h2>
-      <p>Unter dem Begriff „Cookies" werden Funktionen verstanden, die Informationen auf Endgeräten der Nutzer speichern und aus ihnen auslesen. Wir verwenden Cookies gemäß den gesetzlichen Vorschriften und holen, wenn erforderlich, vorab die Zustimmung der Nutzer ein.</p>
-      <p><strong>Speicherdauer:</strong> Temporäre Cookies werden gelöscht, nachdem ein Nutzer das Onlineangebot verlassen hat. Permanente Cookies bleiben auch nach dem Schließen des Endgeräts gespeichert, in der Regel bis zu zwei Jahre.</p>
+      <p>Wir verwenden Cookies gemäß den gesetzlichen Vorschriften und holen, wenn erforderlich, vorab die Zustimmung der Nutzer ein.</p>
       <ul>
         <li><strong>Verarbeitete Datenarten:</strong> Meta-, Kommunikations- und Verfahrensdaten.</li>
         <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO); Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO).</li>
@@ -1064,8 +1180,7 @@
       </ul>
 
       <h2 id="dp-social">Präsenzen in sozialen Netzwerken (Social Media)</h2>
-      <p>Wir unterhalten Onlinepräsenzen innerhalb sozialer Netzwerke und verarbeiten in diesem Rahmen Nutzerdaten, um mit den dort aktiven Nutzern zu kommunizieren oder Informationen über uns anzubieten.</p>
-      <p>Wir weisen darauf hin, dass dabei Nutzerdaten außerhalb des Raumes der Europäischen Union verarbeitet werden können. Ferner werden die Daten der Nutzer innerhalb sozialer Netzwerke im Regelfall für Marktforschungs- und Werbezwecke verarbeitet.</p>
+      <p>Wir unterhalten Onlinepräsenzen innerhalb sozialer Netzwerke und verarbeiten in diesem Rahmen Nutzerdaten.</p>
       <ul>
         <li><strong>Verarbeitete Datenarten:</strong> Kontaktdaten; Inhaltsdaten; Nutzungsdaten.</li>
         <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
@@ -1073,23 +1188,18 @@
       <p><strong>Instagram:</strong> Soziales Netzwerk; Dienstanbieter: Meta Platforms Ireland Limited, Merrion Road, Dublin 4, Irland; <a href="https://privacycenter.instagram.com/policy/" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Data Privacy Framework (DPF).</p>
 
       <h2 id="dp-plugins">Plug-ins und eingebettete Funktionen sowie Inhalte</h2>
-      <p>Wir binden Funktions- und Inhaltselemente in unser Onlineangebot ein, die von den Servern ihrer jeweiligen Anbieter (Drittanbieter) bezogen werden. Die Einbindung setzt immer voraus, dass die Drittanbieter die IP-Adresse der Nutzer verarbeiten.</p>
-      <ul>
-        <li><strong>Verarbeitete Datenarten:</strong> Nutzungsdaten; Meta-, Kommunikations- und Verfahrensdaten.</li>
-        <li><strong>Rechtsgrundlagen:</strong> Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO); Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).</li>
-      </ul>
-      <p><strong>Google Fonts:</strong> Bezug von Schriften zum Zwecke einer technisch sicheren und effizienten Nutzung. Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland; <a href="https://policies.google.com/privacy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Data Privacy Framework (DPF).</p>
-      <p><strong>Vercel:</strong> Unsere Website wird über die Infrastruktur von Vercel gehostet. Vercel verarbeitet dabei technische Zugriffsdaten (u.&nbsp;a. IP-Adressen, Browsertyp, Zugriffszeiten) zur Bereitstellung und Absicherung des Onlineangebots. Dienstanbieter: Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA; <a href="https://vercel.com/legal/privacy-policy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Standardvertragsklauseln.</p>
+      <p>Wir binden Funktions- und Inhaltselemente in unser Onlineangebot ein, die von den Servern ihrer jeweiligen Anbieter bezogen werden.</p>
+      <p><strong>Google Fonts:</strong> Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland; <a href="https://policies.google.com/privacy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Data Privacy Framework (DPF).</p>
+      <p><strong>Vercel:</strong> Unsere Website wird über die Infrastruktur von Vercel gehostet. Dienstanbieter: Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA; <a href="https://vercel.com/legal/privacy-policy" target="_blank">Datenschutzerklärung</a>. Grundlage Drittlandtransfers: Standardvertragsklauseln.</p>
 
       <h2 id="dp-aenderung">Änderung und Aktualisierung</h2>
-      <p>Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung an, sobald die Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen. Wir informieren Sie, sobald durch die Änderungen eine Mitwirkungshandlung Ihrerseits (z.&nbsp;B. Einwilligung) oder eine sonstige individuelle Benachrichtigung erforderlich wird.</p>
+      <p>Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung an, sobald die Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen.</p>
 
       <h2 id="dp-begriffe">Begriffsdefinitionen</h2>
-      <p>In diesem Abschnitt erhalten Sie eine Übersicht der in dieser Datenschutzerklärung verwendeten Begrifflichkeiten:</p>
       <ul>
         <li><strong>Personenbezogene Daten:</strong> Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen.</li>
         <li><strong>Verantwortlicher:</strong> Die natürliche oder juristische Person, die über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</li>
-        <li><strong>Verarbeitung:</strong> Jeder Vorgang im Zusammenhang mit personenbezogenen Daten (Erheben, Erfassen, Speichern, Verwenden, Übermitteln, Löschen usw.).</li>
+        <li><strong>Verarbeitung:</strong> Jeder Vorgang im Zusammenhang mit personenbezogenen Daten.</li>
         <li><strong>Auftragsverarbeiter:</strong> Eine natürliche oder juristische Person, die personenbezogene Daten im Auftrag des Verantwortlichen verarbeitet.</li>
         <li><strong>Einwilligung:</strong> Jede freiwillig, für den bestimmten Fall und in informierter Weise abgegebene Willensbekundung der betroffenen Person.</li>
       </ul>
@@ -1100,7 +1210,7 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({ lerp: 0.08, duration: 1.4, smooth: true });
+  const lenis = new Lenis({ lerp: 0.07, duration: 1.6, smooth: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
@@ -1126,16 +1236,11 @@
     document.getElementById('portfolioCarousel').scrollBy({ left: dir * 390, behavior: 'smooth' });
   }
 
-  // Portfolio videos – loop 10 seconds from data-start (default 0)
   document.querySelectorAll('.portfolio-video').forEach(video => {
     const start = parseFloat(video.dataset.start || 0);
-    video.addEventListener('loadedmetadata', function() {
-      this.currentTime = start;
-    });
+    video.addEventListener('loadedmetadata', function() { this.currentTime = start; });
     video.addEventListener('timeupdate', function() {
-      if (this.currentTime >= start + 10 || this.currentTime < start) {
-        this.currentTime = start;
-      }
+      if (this.currentTime >= start + 10 || this.currentTime < start) this.currentTime = start;
     });
   });
 
@@ -1151,14 +1256,14 @@
   gsap.set('#heroContent', { opacity: 1 });
 
   gsap.timeline({ delay: 0.1 })
-    .to('#navbar',        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0)
-    .to('.hero-location', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.4)
-    .to('.line-1',        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.6)
-    .to('.line-2',        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.8)
-    .to('.line-3',        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 1.0)
-    .to('.hero-subtext',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.2)
-    .to('.hero-bullets',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.35)
-    .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.5);
+    .to('#navbar',        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0)
+    .to('.hero-location', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.5)
+    .to('.line-1',        { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' }, 0.75)
+    .to('.line-2',        { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' }, 1.0)
+    .to('.line-3',        { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' }, 1.25)
+    .to('.hero-subtext',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.5)
+    .to('.hero-bullets',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.7)
+    .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.9);
 
   lenis.on('scroll', ({ scroll }) => {
     const hi = document.querySelector('.hero-inner');
@@ -1167,17 +1272,18 @@
     if (hb) hb.style.transform = `translateY(${scroll * 0.10}px)`;
   });
 
-  const st = { start: 'top 80%', toggleActions: 'play none none none' };
+  const st = { start: 'top 82%', toggleActions: 'play none none none' };
 
-  gsap.from('.stat-item', { scrollTrigger: { trigger: '.stats-bar', ...st }, opacity: 0, y: 30, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
-  gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 0.8, ease: 'power3.out' });
-  gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.1, duration: 0.6, ease: 'power2.out' });
-  gsap.from('.contact-form', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, y: 30, duration: 0.8, ease: 'power2.out' });
-  gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.12, duration: 0.7, ease: 'power2.out' });
-  gsap.from('#booking .booking-headline, #booking .booking-sub, #booking .booking-cta', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, y: 30, stagger: 0.15, duration: 0.8, ease: 'power2.out' });
+  gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.ueber-grid > *', { scrollTrigger: { trigger: '#ueber-uns', ...st }, opacity: 0, y: 40, stagger: 0.22, duration: 1.0, ease: 'power2.out' });
+  gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.12, duration: 0.9, ease: 'power2.out' });
+  gsap.from('.testimonial-card', { scrollTrigger: { trigger: '#testimonials', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
+  gsap.from('.paket-card', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
+  gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
+  gsap.from('#booking .booking-headline, #booking .booking-sub, #booking .booking-cta', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, y: 30, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
 
-  document.querySelectorAll('.section-headline').forEach(el => {
-    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 35, duration: 0.8, ease: 'power3.out' });
+  document.querySelectorAll('.section-headline, .ueber-headline').forEach(el => {
+    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 35, duration: 1.0, ease: 'power3.out' });
   });
 
   function openImpressum() {
@@ -1209,23 +1315,6 @@
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDatenschutz(); closeImpressum(); } });
 
-  // Contact form → mailto
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const phone = document.getElementById('cf-phone').value.trim();
-    const msg = document.getElementById('cf-msg').value.trim();
-    if (!name || !email || !msg) return;
-    const subject = encodeURIComponent('Neue Anfrage über tribestudio.de');
-    const body = encodeURIComponent(
-      `Name: ${name}\nE-Mail: ${email}\nTelefon: ${phone || '–'}\n\nNachricht:\n${msg}`
-    );
-    window.location.href = `mailto:support@tribestudio.de?subject=${subject}&body=${body}`;
-    document.getElementById('formSuccess').classList.add('visible');
-  });
-
-  // Prevent Lenis from intercepting scroll events inside modals
   document.querySelectorAll('.datenschutz-box').forEach(box => {
     box.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
     box.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
