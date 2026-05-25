@@ -443,11 +443,12 @@
 
     /* ===== PROCESS (light) ===== */
     #process { background: var(--light); }
-    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3.5rem; }
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3.5rem; align-items: stretch; }
     .process-card {
       background: var(--white); border-radius: 12px; padding: 2rem;
       border: 1px solid var(--light-2);
       transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
     }
     .process-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.07); }
     .process-num {
